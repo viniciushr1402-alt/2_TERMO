@@ -9,4 +9,4 @@ const sujo = entrada.keyInYNStrict("O seu nome esta sujo? ")
 if (Renda >= 2000 && sujo === false) {
     console.log(`\n Parabéns ${nome}, seu emprestimo foi aprovado`)
 } else {
-    console.log(`\n Que tristeza ${nome}, seu emprestimo foi negado`)
+    console.log(`\n Que tristeza ${nome}, seu emprestimo foi negado`);
