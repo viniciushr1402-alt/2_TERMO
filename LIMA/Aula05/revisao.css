@@ -1,0 +1,36 @@
+body {
+    background-color: darkgray;
+}
+
+header{
+font-family: Arial, Helvetica, sans-serif;
+background-color: rgb(88, 79, 79);
+}
+
+nav a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    text-align: center;
+}
+
+.bemvindo {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.tecnológica {
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 20px;                             
+    border-radius: 8px;                       
+    margin-top: 20px;                         
+}
+
+
+.tecnológica h1 {
+    color: #1c38d3;                           
+    border: none;                              
+    text-align: left;                    
+}
+
+
+
+
