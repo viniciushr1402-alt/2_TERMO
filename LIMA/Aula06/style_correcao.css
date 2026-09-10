@@ -1,0 +1,113 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabecalho */
+header {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+header h1 {
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0 0 5px 0;
+}
+
+header p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+}
+
+/* Navegacao */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Conteudo Principal */
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* Secoes */
+section {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-top: 5px solid #1e3a5f;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+section h2 {
+    color: #1e3a5f;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Secao Servicos, Equipe e Projetos */
+#servicos article,
+.funcionarios,
+#projetos article {
+    background-color: #eaf2f8;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+/* Equipe centralizada */
+.funcionarios {
+    text-align: center;
+}
+
+.funcionarios img,
+#projetos article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/* Secao Contato */
+#contato article {
+    line-height: 1.6;
+}
+
+#contato a {
+    display: inline-block;
+    color: #1e3a5f;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+
+/* Rodape */
+footer {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+}
+
+footer p {
+    margin: 5px 0;
+}
