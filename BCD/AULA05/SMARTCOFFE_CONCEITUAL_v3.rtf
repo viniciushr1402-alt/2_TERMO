@@ -1,0 +1,228 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1046{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset0 MS Sans Serif;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs16 001 - Rela\f1\'e7\'e3o: \cf2\b0 ATENDE\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 002 - Rela\f1\'e7\'e3o: \cf2\b0 ATRIBUI\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 003 - Entidade: \cf2\b0 CLIENTE\cf1\b 
+\par \cf0\b0 CLIENTE
+\par ID_cliente: INT (PK) (1,1) -> Identificador unico do cliente
+\par nome: VARCHAR(100) (1,1) -> Nome completo do cliente
+\par email: VARCHAR(100) (0,1) -> E-mail para contato e notificacoes
+\par CPF: VARCHAR(14) (0,1) -> Documento de identificacao fiscal
+\par telefone: VARCHAR(15) (0,1) -> Numero de telefone principal
+\par admissao: DATE (0,1) -> Data de cadastro ou registro do cliente
+\par 
+\par \cf1\b 004 - Rela\f1\'e7\'e3o: \cf2\b0 CONTEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 005 - Atributo: \cf2\b0 CPF\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 006 - Atributo: \cf2\b0 Credito\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 007 - Entidade: \cf2\b0 DELIVERY\cf1\b 
+\par \cf0\b0 DELIVERY
+\par ID_delivery: INT (PK) (1,1) -> Identificador unico da entrega
+\par endereco_de_entrega: VARCHAR(255) (1,1) -> Local completo para entrega
+\par taxa_entrega: DECIMAL(10,2) (1,1) -> Custo cobrado pelo envio
+\par status_do_pedido: VARCHAR(30) (1,1) -> Etapa do envio (ex: Em Rota, Entregue)
+\par data_saida: DATETIME (0,1) -> Horario de despacho do entregador
+\par ID_pedido: INT (FK) (1,1) -> Vinculo com o pedido associado
+\par ID_funcionario: INT (FK) (0,1) -> Vinculo com o entregador responsavel
+\par 
+\par \cf1\b 008 - Atributo: \cf2\b0 Debito\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 009 - Rela\f1\'e7\'e3o: \cf2\b0 ENTREGA\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 010 - Entidade: \cf2\b0 ESTOQUE\cf1\b 
+\par \cf0\b0 ESTOQUE
+\par ID_insumo: INT (PK) (1,1) -> Identificador unico do insumo ou materia-prima
+\par nome_insumo: VARCHAR(100) (1,1) -> Nome do item em estoque (ex: Leite, Graos de Cafe)
+\par quantidade_atual: DECIMAL(10,2) (1,1) -> Volume disponivel no momento
+\par quantidade_minima: DECIMAL(10,2) (1,1) -> Limite seguro para acionar nova compra
+\par unidade_medida: VARCHAR(20) (1,1) -> Tipo de medicao (ex: KG, Litro, Unidade)
+\par 
+\par \cf1\b 011 - Rela\f1\'e7\'e3o: \cf2\b0 E_PEDIDO\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 012 - Rela\f1\'e7\'e3o: \cf2\b0 FAZ\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 013 - Entidade: \cf2\b0 FORNECEDOR\cf1\b 
+\par \cf0\b0 FORNECEDOR
+\par ID_fornecedor: INT (PK) (1,1) -> Identificador unico do fornecedor
+\par email_fornecedor: VARCHAR(100) (0,1) -> E-mail comercial do fornecedor
+\par telefone_fornecedor: VARCHAR(15) (0,1) -> Telefone de contato comercial
+\par metodo_de_transporte: VARCHAR(50) (0,1) -> Logistica utilizada para entrega de suprimentos
+\par valor: DECIMAL(10,2) (0,1) -> Valor de fornecimento associado
+\par 
+\par \cf1\b 014 - Entidade: \cf2\b0 FUNCIONARIO\cf1\b 
+\par \cf0\b0 FUNCIONARIO
+\par ID_funcionario: INT (PK) (1,1) -> Identificador unico do funcionario
+\par nome_de_funcionario: VARCHAR(100) (1,1) -> Nome completo do funcionario
+\par cpf_do_funcionario: VARCHAR(14) (1,1) -> CPF para registro trabalhista
+\par cargo_funcionario: VARCHAR(50) (0,1) -> Funcao desempenhada na empresa
+\par salario: DECIMAL(10,2) (0,1) -> Remuneracao mensal do funcionario
+\par data_admissao: DATE (1,1) -> Data oficial de contratacao
+\par 
+\par \cf1\b 015 - Rela\f1\'e7\'e3o: \cf2\b0 GERA\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 016 - Atributo: \cf2\b0 ID_cliente\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 017 - Atributo: \cf2\b0 ID_delivery\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 018 - Atributo: \cf2\b0 ID_fornecedor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 019 - Atributo: \cf2\b0 ID_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 020 - Atributo: \cf2\b0 ID_insumo\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 021 - Atributo: \cf2\b0 ID_item_pedido\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 022 - Atributo: \cf2\b0 ID_pagamento\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 023 - Atributo: \cf2\b0 ID_pedido\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 024 - Atributo: \cf2\b0 ID_produto\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 025 - Atributo: \cf2\b0 ID_programa_de_fidelidade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 026 - Entidade: \cf2\b0 ITEM_PEDIDO\cf1\b 
+\par \cf0\b0 ITEM_PEDIDO
+\par ID_item_pedido: INT (PK) (1,1) -> Identificador unico da linha do item
+\par quantidade: INT (1,1) -> Unidades deste produto no mesmo pedido
+\par adicionais: VARCHAR(100) (0,1) -> Observacoes do cliente (ex: Sem acucar)
+\par id_do_produto: INT (FK) (1,1) -> Vinculo com o produto selecionado
+\par ID_pedido: INT (FK) (1,1) -> Vinculo com o pedido ao qual pertence
+\par 
+\par \cf1\b 027 - Entidade: \cf2\b0 PAGAMENTO\cf1\b 
+\par \cf0\b0 PAGAMENTO
+\par ID_pagamento: INT (PK) (1,1) -> Identificador unico da transacao
+\par valor_pago: DECIMAL(10,2) (1,1) -> Quantia quitada pelo cliente
+\par data_hora_pagamento: DATETIME (1,1) -> Registro de quando o pagamento foi confirmado
+\par status_pagamento: VARCHAR(30) (1,1) -> Situacao (ex: Aprovado, Recusado)
+\par Pix: VARCHAR(50) (0,1) -> Dados ou codigo da transacao Pix
+\par Debito: VARCHAR(50) (0,1) -> Dados do pagamento em cartao de debito
+\par Credito: VARCHAR(50) (0,1) -> Dados do pagamento em cartao de credito
+\par ID_pedido: INT (FK) (1,1) -> Vinculo com o pedido sendo pago
+\par 
+\par \cf1\b 028 - Rela\f1\'e7\'e3o: \cf2\b0 PARTICIPA\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 029 - Entidade: \cf2\b0 PEDIDO\cf1\b 
+\par \cf0\b0 PEDIDO
+\par ID_pedido: INT (PK) (1,1) -> Identificador unico do pedido
+\par data_e_hora: DATETIME (1,1) -> Momento em que a compra foi realizada
+\par status: VARCHAR(30) (1,1) -> Situacao atual (ex: Pendente, Em Preparo, Concluido)
+\par valor_total: DECIMAL(10,2) (1,1) -> Soma de todos os itens do pedido
+\par presencial: VARCHAR(10) (0,1) -> Marca se o consumo e no balcao/mesa
+\par delivery: VARCHAR(10) (0,1) -> Marca se e um pedido para entrega
+\par ID_cliente: INT (FK) (1,1) -> Vinkulo com o cliente que fez o pedido
+\par 
+\par \cf1\b 030 - Entidade: \cf2\b0 POGRAMA_DE_FIDELIDADE\cf1\b 
+\par \cf0\b0 PROGRAMA_DE_FIDELIDADE
+\par ID_programa_de_fidelidade: INT (PK) (1,1) -> Identificador unico da conta de fidelidade
+\par nome: VARCHAR(100) (1,1) -> Nome do participante do programa
+\par cpf: VARCHAR(14) (1,1) -> CPF do participante
+\par saldo_pontos: INT (1,1) -> Quantidade acumulada de pontos
+\par beneficios: TEXT (0,1) -> Nivel, descontos ou recompensas disponiveis
+\par data_ultima_atualizacao: DATE (0,1) -> Data da ultima movimentacao de pontos
+\par ID_cliente: INT (FK) (1,1) -> Vinculo com a conta principal do cliente
+\par 
+\par \cf1\b 031 - Entidade: \cf2\b0 PRODUTO \cf1\b 
+\par \cf0\b0 PRODUTO
+\par ID_produto: INT (PK) (1,1) -> Identificador unico do produto
+\par nome: VARCHAR(100) (1,1) -> Nome comercial do item ou bebida
+\par descricao: TEXT (0,1) -> Detalhes, ingredientes ou modo de preparo
+\par categoria: VARCHAR(50) (0,1) -> Classificacao (ex: Cafe, Doce, Salgado)
+\par preco_unitario: DECIMAL(10,2) (1,1) -> Valor de venda por unidade
+\par 
+\par \cf1\b 032 - Atributo: \cf2\b0 Pix\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 033 - Rela\f1\'e7\'e3o: \cf2\b0 SOLICITA\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 034 - Atributo: \cf2\b0 Salario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 035 - Rela\f1\'e7\'e3o: \cf2\b0 TEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 036 - Atributo: \cf2\b0 adcionais\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 037 - Atributo: \cf2\b0 admissao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 038 - Atributo: \cf2\b0 beneficios\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 039 - Atributo: \cf2\b0 cargo_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 040 - Atributo: \cf2\b0 categoria\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 041 - Atributo: \cf2\b0 cpf\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 042 - Atributo: \cf2\b0 cpf_do_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 043 - Atributo: \cf2\b0 data_admissao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 044 - Atributo: \cf2\b0 data_e_hora\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 045 - Atributo: \cf2\b0 data_hora_pagamento\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 046 - Atributo: \cf2\b0 data_saida\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 047 - Atributo: \cf2\b0 data_ultima_atualiza\f1\'e7\'e3o\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 048 - Atributo: \cf2\b0 delivery\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 049 - Atributo: \cf2\b0 descricao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 050 - Atributo: \cf2\b0 email\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 051 - Atributo: \cf2\b0 email._fornecedor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 052 - Atributo: \cf2\b0 endereco_de_entrega\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 053 - Atributo: \cf2\b0 forma_pagamento\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 054 - Atributo: \cf2\b0 id_do_produto\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 055 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 056 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 057 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 058 - Atributo: \cf2\b0 nome_de_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 059 - Atributo: \cf2\b0 nome_insumo\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 060 - Atributo: \cf2\b0 preco_unitario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 061 - Atributo: \cf2\b0 presencial\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 062 - Atributo: \cf2\b0 quantidade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 063 - Atributo: \cf2\b0 quantidade_atual\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 064 - Atributo: \cf2\b0 quantidade_minima\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 065 - Atributo: \cf2\b0 saldo_pontos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 066 - Atributo: \cf2\b0 status\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 067 - Atributo: \cf2\b0 status_do_pedido\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 068 - Atributo: \cf2\b0 status_pagamento\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 069 - Atributo: \cf2\b0 taxa_entrega\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 070 - Atributo: \cf2\b0 telefone\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 071 - Atributo: \cf2\b0 telefone_fornecedor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 072 - Atributo: \cf2\b0 tipo\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 073 - Atributo: \cf2\b0 unidade_medida\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 074 - Atributo: \cf2\b0 valor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 075 - Atributo: \cf2\b0 valor_pago\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 076 - Atributo: \cf2\b0 valor_total\cf1\b 
+\par \cf0\b0 
+\par 
+\par }
+ 

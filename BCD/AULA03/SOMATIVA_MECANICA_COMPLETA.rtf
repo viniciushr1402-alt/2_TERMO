@@ -1,0 +1,257 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1046{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset0 MS Sans Serif;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs16 001 - Entidade: \cf2\b0 CLIENTES\cf1\b 
+\par \cf0\b0 ID_cliente - INT - Identificador \f1\'fanico do cliente
+\par telefone - VARCHAR(20) - Telefone do cliente
+\par nome - VARCHAR(100) - Nome do cliente
+\par email - VARCHAR(100) - E-mail do cliente
+\par CPF - VARCHAR(14) - CPF do cliente
+\par cidade - VARCHAR(40) - Cidade do cliente
+\par carnalidade de relacionamnetos - (1,1) (1,n)
+\par \f0 
+\par \cf1\b 002 - Rela\f1\'e7\'e3o: \cf2\b0 FAZEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 003 - Entidade: \cf2\b0 FORNECEDORES\cf1\b 
+\par \cf0\b0 ID_FORNECEDOR - INT - Identificador \f1\'fanico do fornecedor
+\par NOME - VARCHAR(100) - Nome do fornecedor
+\par TELEFONE - DECIMAL(10,2) - Telefone do fornecedor
+\par FABRICACAO - VARCHAR(100) - Informa\'e7\'e3o de fabrica\'e7\'e3o
+\par MARCA - VARCHAR(50) - Marca fornecida
+\par CONTRATO - VARCHAR(50) - Informa\'e7\'f5es do contrato
+\par EMAIL - VARCHAR(255) - E-mail do fornecedor
+\par itens - VARCHAR(255) - Itens fornecidos
+\par VALIDADE - VARCHAR(200) - Validade
+\par carnalidade de relacionamnetos - (1,n)
+\par \f0 
+\par \cf1\b 004 - Entidade: \cf2\b0 FUNCIONARIOS\cf1\b 
+\par \cf0\b0 FUNCION\f1\'c1RIO:
+\par ID_funcionario - INT - Identificador \'fanico do funcion\'e1rio
+\par cargo_funcionario - VARCHAR(50) - Cargo do funcion\'e1rio
+\par cpf_do_funcionario - VARCHAR(14) - CPF do funcion\'e1rio
+\par nome_de_funcionario - VARCHAR(100) - Nome do funcion\'e1rio
+\par Salario - DECIMAL(10,2) - Sal\'e1rio do funcion\'e1rio
+\par telefone - INT - Telefone do funcion\'e1rio
+\par email - VARCHAR(100) - E-mail do funcion\'e1rio
+\par carnalidade de relacionamnetos - (1,1) (0,n) (1,1)
+\par \f0 
+\par \cf1\b 005 - Entidade: \cf2\b0 MARCAS\cf1\b 
+\par \cf0\b0 ID_MARCA - INT - Identificador \f1\'fanico da marca
+\par NOME - VARCHAR(100) - Nome da marca
+\par ANO - INT - Ano relacionado \'e0 marca
+\par FABRICACAO - VARCHAR(100) - Informa\'e7\'e3o de fabrica\'e7\'e3o
+\par estilo - VARCHAR(50) - Estilo
+\par CONTRATO - VARCHAR(50) - Informa\'e7\'f5es do contrato
+\par veiculos - VARCHAR(255) - Ve\'edculos da marca
+\par itens - VARCHAR(255) - Itens relacionados \'e0 marca
+\par carnalidade de relacionamnetos - (1,1) (1,1
+\par )
+\par \f0 
+\par \cf1\b 006 - Entidade: \cf2\b0 MODELOS\cf1\b 
+\par \cf0\b0 
+\par ID_MODELOS - INT - Identificador \f1\'fanico do modelo
+\par NOME - VARCHAR(100) - Nome do modelo
+\par PAIS - VARCHAR(100) - Pa\'eds de origem
+\par COR - VARCHAR(50) - Cor do ve\'edculo
+\par PLACA - VARCHAR(200) - Placa do ve\'edculo
+\par ESTILO - VARCHAR(200) - Estilo do ve\'edculo
+\par carnalidade de relacionamnetos - (1,1) 
+\par \f0 
+\par \cf1\b 007 - Rela\f1\'e7\'e3o: \cf2\b0 NESCESSITAM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 008 - Entidade: \cf2\b0 ORDENS DE SERVI\f1\'c7O\cf1\b 
+\par \cf0\b0\f0 ID_SERVICOS - INT - Identificador da ordem de servi\f1\'e7o
+\par NOME - VARCHAR(100) - Nome relacionado \'e0 ordem
+\par PROBLEMAS - VARCHAR(100) - Problema apresentado
+\par VALOR - VARCHAR(50) - Valor do servi\'e7o
+\par MUDAN\'c7A - VARCHAR(200) -  Solu\'e7oes previstas para o clinete
+\par REPARA\'c7\'c3O - VARCHAR(200) - Repara\'e7\'e3o de danos
+\par carnalidade de relacionamnetos - (0,n)  \f0 
+\par \cf1\b 009 - Entidade: \cf2\b0 PAGAMENTOS\cf1\b 
+\par \cf0\b0 ID_pagamento - INT - Identificador \f1\'fanico do pagamento
+\par recebimento - VARCHAR(20) - Informa\'e7\'e3o sobre o recebimento
+\par debito - VARCHAR(50) - Pagamento por d\'e9bito
+\par credito - VARCHAR(50) - Pagamento por cr\'e9dito
+\par pix - VARCHAR(50) - Pagamento por PIX
+\par papel - VARCHAR(50) - Pagamento em dinheiro
+\par carnalidade de relacionamnetos - (1,1) 
+\par \f0 
+\par \cf1\b 010 - Entidade: \cf2\b0 PECAS\cf1\b 
+\par \cf0\b0 PE\f1\'c7AS:
+\par ID_PECAS - INT - Identificador \'fanico da pe\'e7a
+\par NOME - VARCHAR(100) - Nome da pe\'e7a
+\par QUANTIDADE - DECIMAL(10,2) - Quantidade dispon\'edvel
+\par FABRICACAO - VARCHAR(100) - Informa\'e7\'e3o de fabrica\'e7\'e3o
+\par MARCA - VARCHAR(50) - Marca da pe\'e7a
+\par VALIDADE - VARCHAR(200) - Validade da pe\'e7a
+\par carnalidade de relacionamnetos - (0,n) 
+\par \f0 
+\par \cf1\b 011 - Rela\f1\'e7\'e3o: \cf2\b0 POSSUEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 012 - Rela\f1\'e7\'e3o: \cf2\b0 PRECISAM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 013 - Rela\f1\'e7\'e3o: \cf2\b0 RECEBEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 014 - Rela\f1\'e7\'e3o: \cf2\b0 Rela\'e7\'e3o_3\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 015 - Entidade: \cf2\b0 SERVI\f1\'c7OS\cf1\b 
+\par \cf0\b0\f0 ID_SERVICOS - INT - Identificador \f1\'fanico do servi\'e7o
+\par NOME - VARCHAR(100) - Nome do servi\'e7o
+\par QUANTIDADE - DECIMAL(10,2) - Quantidade do servi\'e7o
+\par PLANO - VARCHAR(100) - Plano do servi\'e7o
+\par VALOR - VARCHAR(50) - Valor do servi\'e7o
+\par TELEFONE - VARCHAR(200) - Telefone relacionado
+\par EMAIL - VARCHAR(200) - E-mail relacionado
+\par carnalidade de relacionamnetos - (1,1) (1,n)
+\par \f0 
+\par \cf1\b 016 - Rela\f1\'e7\'e3o: \cf2\b0 TEM\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 017 - Entidade: \cf2\b0 VEICULOS\cf1\b 
+\par \cf0\b0 ID_VEICULOS - INT - Identificador \f1\'fanico do ve\'edculo
+\par caminhao - VARCHAR(50) - Informa\'e7\'e3o do caminh\'e3o
+\par carro - VARCHAR(50) - Informa\'e7\'e3o do carro
+\par moto - VARCHAR(50) - Informa\'e7\'e3o da moto
+\par vans - VARCHAR(50) - Informa\'e7\'e3o da van
+\par tipo - VARCHAR(50) - Tipo do ve\'edculo
+\par carnalidade de relacionamnetos - (1,1) (1,1)
+\par \f0 
+\par \cf1\b 018 - Atributo: \cf2\b0 ano\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 019 - Atributo: \cf2\b0 caminhao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 020 - Atributo: \cf2\b0 cargo_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 021 - Atributo: \cf2\b0 carro\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 022 - Atributo: \cf2\b0 cidade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 023 - Rela\f1\'e7\'e3o: \cf2\b0 contem\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 024 - Atributo: \cf2\b0 contrato\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 025 - Atributo: \cf2\b0 contrato\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 026 - Atributo: \cf2\b0 cor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 027 - Atributo: \cf2\b0 cpf\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 028 - Atributo: \cf2\b0 cpf_do_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 029 - Atributo: \cf2\b0 credito\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 030 - Atributo: \cf2\b0 debito\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 031 - Atributo: \cf2\b0 email\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 032 - Atributo: \cf2\b0 email\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 033 - Atributo: \cf2\b0 email\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 034 - Atributo: \cf2\b0 email\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 035 - Atributo: \cf2\b0 estilo\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 036 - Atributo: \cf2\b0 estilo\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 037 - Atributo: \cf2\b0 fabricacao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 038 - Atributo: \cf2\b0 fabricacao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 039 - Atributo: \cf2\b0 fabricacao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 040 - Atributo: \cf2\b0 id_clientes\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 041 - Atributo: \cf2\b0 id_fornecedores\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 042 - Atributo: \cf2\b0 id_funcionarios\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 043 - Atributo: \cf2\b0 id_marcas\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 044 - Atributo: \cf2\b0 id_modelos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 045 - Atributo: \cf2\b0 id_ordens_de_servicos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 046 - Atributo: \cf2\b0 id_pagamentos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 047 - Atributo: \cf2\b0 id_pecas\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 048 - Atributo: \cf2\b0 id_servicos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 049 - Atributo: \cf2\b0 id_veiculos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 050 - Atributo: \cf2\b0 itens\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 051 - Atributo: \cf2\b0 itens\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 052 - Atributo: \cf2\b0 marca\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 053 - Atributo: \cf2\b0 marca\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 054 - Atributo: \cf2\b0 moto\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 055 - Atributo: \cf2\b0 mudan\f1\'e7a\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 056 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 057 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 058 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 059 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 060 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 061 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 062 - Atributo: \cf2\b0 nome\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 063 - Atributo: \cf2\b0 nome_do_funcionario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 064 - Atributo: \cf2\b0 pais\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 065 - Atributo: \cf2\b0 papel\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 066 - Atributo: \cf2\b0 pix\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 067 - Atributo: \cf2\b0 placa\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 068 - Atributo: \cf2\b0 plano\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 069 - Atributo: \cf2\b0 problemas\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 070 - Atributo: \cf2\b0 quantidade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 071 - Atributo: \cf2\b0 quantidade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 072 - Rela\f1\'e7\'e3o: \cf2\b0 realizam\cf1\b 
+\par \cf0\b0\f0 
+\par \cf1\b 073 - Atributo: \cf2\b0 recebimento\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 074 - Atributo: \cf2\b0 reparacao\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 075 - Atributo: \cf2\b0 salario\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 076 - Atributo: \cf2\b0 telefone\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 077 - Atributo: \cf2\b0 telefone\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 078 - Atributo: \cf2\b0 telefone\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 079 - Atributo: \cf2\b0 telefone\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 080 - Atributo: \cf2\b0 tipos\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 081 - Atributo: \cf2\b0 validade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 082 - Atributo: \cf2\b0 validade\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 083 - Atributo: \cf2\b0 valor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 084 - Atributo: \cf2\b0 valor\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 085 - Atributo: \cf2\b0 vans\cf1\b 
+\par \cf0\b0 
+\par \cf1\b 086 - Atributo: \cf2\b0 veiculos\cf1\b 
+\par \cf0\b0 
+\par 
+\par }
+ 
