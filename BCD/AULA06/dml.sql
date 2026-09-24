@@ -1,14 +1,10 @@
 -- Active: 1788435082238@@127.0.0.1@3306@smartcoffe_dml_vini
--- BANCO DE DADOS - SMARTCOFFE - DML
--- BANCO DE DADOS - SMARTCOFFE - DML
-
 
 DROP DATABASE IF EXISTS SMARTCOFFE_DML_VINI;
 
 CREATE DATABASE IF NOT EXISTS SMARTCOFFE_DML_VINI;
 
 USE SMARTCOFFE_DML_VINI;
-
 
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
@@ -19,12 +15,10 @@ CREATE TABLE cliente (
     ativo BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-
 CREATE TABLE categoria (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL UNIQUE
 );
-
 
 CREATE TABLE produto (
     id_produto INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,7 +30,6 @@ CREATE TABLE produto (
     REFERENCES categoria (id_categoria)
 );
 
-
 CREATE TABLE pedido (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     data_pedido DATETIME NOT NULL,
@@ -46,7 +39,6 @@ CREATE TABLE pedido (
     CONSTRAINT fk_pedido_cliente FOREIGN KEY (id_cliente) 
     REFERENCES cliente (id_cliente)
 );
--- Faça do pedido agora
 
 CREATE TABLE item_pedido (
     id_item INT PRIMARY KEY AUTO_INCREMENT,
@@ -61,12 +53,10 @@ CREATE TABLE item_pedido (
     REFERENCES produto (id_produto)
 );
 
-
 CREATE TABLE forma_pagamento (
     id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(40) NOT NULL UNIQUE
 );
-
 
 CREATE TABLE pagamento (
     id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,8 +69,6 @@ CREATE TABLE pagamento (
     CONSTRAINT fk_pagamento_forma_pagamento FOREIGN KEY (id_forma_pagamento)
     REFERENCES forma_pagamento (id_forma_pagamento)
 );
---- fAÇA ESSES 3 
--- INSERINDO DADOS NO BD
 
 INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES
 ('Luis Felipe', 'luis@email.com', '1999999901', 'Limeira', TRUE),
@@ -113,7 +101,6 @@ INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Café Coado Especial', 8.50, TRUE, 1),
 ('Ristretto', 6.50, TRUE, 1),
 ('Café Duplo', 9.00, TRUE, 1);
-
 
 INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Cappuccino Tradicional', 12.00, TRUE, 2),
@@ -162,27 +149,22 @@ INSERT INTO item_pedido (id_pedido, id_produto, quantidade, preco_unitario, obse
 (2, 18, 1, 14.00, NULL),
 (3, 11, 1, 12.50, 'Pouco gelo'),
 (3, 20, 1, 8.00, NULL),
-(4, 26, 1, 12.00, NULL),
+(4, 25, 1, 12.00, NULL),
 (5, 9, 2, 13.50, 'Bem quente'),
 (5, 17, 1, 17.50, NULL),
-(6, 29, 1, 27.00, NULL),
+(6, 22, 1, 27.00, NULL),
 (7, 3, 1, 8.50, NULL),
 (7, 19, 1, 12.00, 'Aquecer o croissant'),
 (8, 12, 1, 18.00, 'Bastante calda de chantilly'),
 (9, 2, 1, 7.00, NULL),
 (9, 16, 2, 7.50, NULL),
-(10, 28, 1, 24.00, NULL);
+(10, 24, 1, 24.00, NULL);
 
 INSERT INTO forma_pagamento (descricao) VALUES
 ('Dinheiro'),
 ('Cartão de Crédito'),
 ('Cartão de Débito'),
 ('PIX');
-
-
-
-
-
 
 INSERT INTO pagamento (id_pedido, id_forma_pagamento, valor, data_pagamento) VALUES
 (1, 4, 19.50, '2026-03-20 08:32:00'),
@@ -191,3 +173,62 @@ INSERT INTO pagamento (id_pedido, id_forma_pagamento, valor, data_pagamento) VAL
 (4, 3, 12.00, '2026-03-20 11:46:00'), 
 (5, 4, 44.50, '2026-03-20 14:22:00'), 
 (6, 2, 27.00, '2026-03-21 08:02:00'); 
+
+INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES 
+('Carlos Silva', 'carlos@email.com', '19988887777', 'Limeira', TRUE),
+('Ana Souza', 'ana@email.com', '19977776666', 'Campinas', TRUE);
+
+SET @id_carlos = (SELECT id_cliente FROM cliente WHERE email = 'carlos@email.com');
+
+INSERT INTO categoria (nome) VALUES 
+('Especiais da Casa');
+
+SET @id_cat_especiais = LAST_INSERT_ID();
+
+INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES 
+('Café Nutella Especial', 15.00, TRUE, @id_cat_especiais),
+('Cappuccino Doce de Leite', 16.50, TRUE, @id_cat_especiais),
+('Torta de Maçã da Casa', 18.00, TRUE, @id_cat_especiais);
+
+SET @id_prod1 = (SELECT id_produto FROM produto WHERE nome = 'Café Nutella Especial');
+SET @id_prod2 = (SELECT id_produto FROM produto WHERE nome = 'Cappuccino Doce de Leite');
+
+INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES 
+('Fernanda Lima', 'fernanda@email.com', NULL, 'Limeira', TRUE);
+
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES 
+(NOW(), 'ABERTO', 0.00, @id_carlos);
+
+SET @id_novo_pedido = LAST_INSERT_ID();
+
+INSERT INTO item_pedido (id_pedido, id_produto, quantidade, preco_unitario, observacao) VALUES 
+(@id_novo_pedido, @id_prod1, 1, 15.00, 'Sem açúcar'),
+(@id_novo_pedido, @id_prod2, 2, 16.50, 'Extra quente');
+
+UPDATE cliente 
+SET telefone = '19988889999' 
+WHERE email = 'carlos@email.com';
+
+UPDATE cliente 
+SET cidade = 'Piracicaba', telefone = '19977770000' 
+WHERE email = 'ana@email.com';
+
+UPDATE produto 
+SET preco = preco * 1.08 
+WHERE id_categoria = @id_cat_especiais;
+
+UPDATE pedido 
+SET status_pedido = 'PREPARANDO' 
+WHERE id_pedido = @id_novo_pedido;
+
+UPDATE pedido 
+SET valor_total = (
+    SELECT SUM(quantidade * preco_unitario) 
+    FROM item_pedido 
+    WHERE id_pedido = @id_novo_pedido
+) 
+WHERE id_pedido = @id_novo_pedido;
+
+UPDATE produto 
+SET ativo = FALSE 
+WHERE id_produto = @id_prod1;
