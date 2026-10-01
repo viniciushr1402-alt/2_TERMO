@@ -302,3 +302,13 @@ SELECT nome FROM cliente WHERE id_cliente = 121;
 
 -- PASSO 2
 SELECT * FROM pedido WHERE id_pedido = @pedido_compra;
+
+-- PARTE D
+
+INSERT INTO categoria (nome) VALUES ('Categoria Teste');
+DELETE FROM categoria WHERE nome = 'Categoria Teste';
+INSERT INTO produto (nome, preco, ativo, id_categoria) 
+VALUES ('Produto Invalido', 10.00, TRUE, 9999);
+INSERT INTO cliente (nome, email, telefone, cidade, ativo) 
+VALUES ('Novo CICLAMO', 'luis@email.com', '19988887777', 'Limeira', TRUE);
+
