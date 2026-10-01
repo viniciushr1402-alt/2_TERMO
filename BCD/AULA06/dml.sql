@@ -232,3 +232,6 @@ WHERE id_pedido = @id_novo_pedido;
 UPDATE produto 
 SET ativo = FALSE 
 WHERE id_produto = @id_prod1;
+
+
+se eu nao me engano esta feito algumas partes mas tem que separar oque e exercicio 1 e etc mas algumas sao oque fizemos em aula mande so os exercicios feitos para mim e pule a 11 e faça as divisorias de cada 

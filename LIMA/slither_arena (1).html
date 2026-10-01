@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slither Arena – VS Code Edition</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#1e1e1e;--side:#252526;--bar:#333;--act:#007acc;--tx:#cccccc;--dim:#858585;--line:#3c3c3c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--tx);font:12px/1.5 Consolas,"Cascadia Mono",Menlo,monospace;overflow:hidden}
+#app{height:100%;display:grid;grid-template-rows:28px 1fr 150px 22px}
+#title{background:var(--bar);display:flex;align-items:center;gap:8px;padding:0 10px;color:var(--dim);font-family:system-ui,sans-serif;font-size:12px;white-space:nowrap;overflow:hidden}
+#title i{width:11px;height:11px;border-radius:50%;display:inline-block}
+#main{display:grid;grid-template-columns:190px 1fr;min-height:0}
+#side{background:var(--side);padding:8px 0;border-right:1px solid var(--line);overflow:hidden}
+#side h4{margin:4px 12px 6px;font:600 11px system-ui,sans-serif;color:var(--dim)}
+#side div{padding:1px 12px 1px 22px;white-space:nowrap}
+#side .sel{background:#37373d;color:#fff}
+#center{display:grid;grid-template-rows:30px 1fr;min-width:0;min-height:0}
+#tabs{display:flex;background:var(--side);border-bottom:1px solid var(--line)}
+#tabs span{padding:5px 14px;color:var(--dim);border-right:1px solid var(--line);white-space:nowrap}
+#tabs .on{background:var(--bg);color:#fff;border-top:1px solid var(--act)}
+#split{display:grid;grid-template-columns:minmax(220px,36%) 1fr;min-height:0}
+#code{margin:0;padding:8px 0;overflow:hidden;counter-reset:ln;border-right:1px solid var(--line)}
+#code div{white-space:pre;padding-right:8px}
+#code div::before{counter-increment:ln;content:counter(ln);display:inline-block;width:34px;text-align:right;margin-right:14px;color:#6e7681}
+.k{color:#c586c0}.f{color:#dcdcaa}.s{color:#ce9178}.c{color:#6a9955}.n{color:#b5cea8}.v{color:#9cdcfe}.t{color:#4ec9b0}
+#game{position:relative;min-width:0;min-height:0;background:#07051a}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair;touch-action:none}
+#lb{position:absolute;top:8px;right:8px;background:rgba(10,8,34,.72);border:1px solid rgba(0,229,255,.4);border-radius:6px;padding:6px 10px;min-width:150px;font-size:11px;pointer-events:none;box-shadow:0 0 14px rgba(0,229,255,.25)}
+#lb b{display:block;color:#ffd000;margin-bottom:2px}
+#lb div{display:flex;justify-content:space-between;gap:12px}
+#hint{position:absolute;left:8px;bottom:6px;color:rgba(255,255,255,.55);font-size:11px;pointer-events:none}
+#bt{position:absolute;right:10px;bottom:10px;width:54px;height:54px;border-radius:50%;border:2px solid #ffd000;background:rgba(255,208,0,.18);color:#ffd000;font-size:22px;touch-action:none;display:none}
+@media(pointer:coarse){#bt{display:block}}
+#dead{position:absolute;inset:0;display:none;place-items:center;background:rgba(7,5,26,.7);text-align:center}
+#dead button{margin-top:10px;padding:8px 18px;background:var(--act);color:#fff;border:0;border-radius:3px;font:inherit;font-size:13px;cursor:pointer}
+#dead button:focus-visible{outline:2px solid #fff}
+#term{background:var(--bg);border-top:1px solid var(--line);display:grid;grid-template-rows:26px 1fr;min-height:0}
+#term header{padding:4px 14px;color:#fff;border-bottom:1px solid var(--line);font-family:system-ui,sans-serif}
+#log{padding:6px 14px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+#log div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g{color:#4ade80}.i{color:#38bdf8}.w{color:#fbbf24}
+#status{background:var(--act);color:#fff;display:flex;gap:16px;padding:0 10px;align-items:center;font-family:system-ui,sans-serif;font-size:11.5px;white-space:nowrap;overflow:hidden}
+@media(max-width:820px){#main{grid-template-columns:1fr}#side{display:none}#split{grid-template-columns:1fr}#code{display:none}#app{grid-template-rows:28px 1fr 110px 22px}}
+</style>
+</head>
+<body>
+<div id="app">
+ <div id="title"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i><span>slither_arena.py — arena_project — Visual Studio Code</span></div>
+ <div id="main">
+  <aside id="side">
+   <h4>EXPLORADOR</h4>
+   <div style="padding-left:12px">▾ ARENA_PROJECT</div>
+   <div class="sel">🐍 slither_arena.py</div>
+   <div>📄 requirements.txt</div>
+   <div>📄 README.md</div>
+   <div>📁 assets</div>
+  </aside>
+  <section id="center">
+   <div id="tabs"><span class="on">slither_arena.py</span><span>requirements.txt</span></div>
+   <div id="split">
+    <pre id="code" aria-hidden="true">
+<div><span class="k">import</span> pygame, random</div>
+<div><span class="k">from</span> arena <span class="k">import</span> Cobra, Orbe</div>
+<div></div>
+<div><span class="c"># laço principal do jogo</span></div>
+<div><span class="k">def</span> <span class="f">loop_jogo</span>():</div>
+<div>    <span class="k">while</span> jogo.<span class="v">rodando</span>:</div>
+<div>        head = jogador.<span class="f">cabeca</span>()</div>
+<div>        <span class="k">if</span> head == (comida[<span class="n">0</span>], comida[<span class="n">1</span>]):</div>
+<div>            jogador.<span class="f">crescer</span>(<span class="n">10</span>)</div>
+<div>            comida = <span class="f">novo_orbe</span>()</div>
+<div>        <span class="k">for</span> bot <span class="k">in</span> bots:</div>
+<div>            bot.<span class="f">mover</span>()</div>
+<div>            <span class="k">if</span> bot.<span class="f">colidiu</span>(cobras):</div>
+<div>                <span class="f">log</span>(<span class="s">"[INFO] eliminado"</span>)</div>
+<div>        tela.<span class="f">desenhar</span>()</div></pre>
+    <div id="game">
+     <canvas id="cv" aria-label="Arena do jogo"></canvas>
+     <div id="lb"></div>
+     <div id="hint">Mouse/dedo: direção · clique ou Espaço: turbo</div>
+     <button id="bt" aria-label="Turbo">⚡</button>
+     <div id="dead"><div><div style="font-size:22px;color:#ff5a7a">Você foi eliminado</div><div id="fin" style="color:#ccc;margin-top:4px"></div><button id="rs">Jogar de novo</button></div></div>
+    </div>
+   </div>
+  </section>
+ </div>
+ <div id="term"><header>TERMINAL &nbsp;·&nbsp; python slither_arena.py</header><div id="log"></div></div>
+ <div id="status"><span>⎇ main*</span><span>Python 3.12</span><span>● Slither Arena</span><span>UTF-8</span></div>
+</div>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),R=Math.random,W=3200;
+let VW=0,VH=0,T=0;
+function rs(){const r=cv.parentElement.getBoundingClientRect();VW=cv.width=Math.max(200,r.width);VH=cv.height=Math.max(200,r.height)}
+new ResizeObserver(rs).observe(cv.parentElement);rs();
+const pal=[['#00e5ff','#a855f7'],['#ffd000','#ff7a00'],['#ff2a1a','#ff8c00'],['#9dff00','#22d36b'],['#ff3ea5','#ff9ad5'],['#00ffa6','#0077ff'],['#c084fc','#f0abfc'],['#ffffff','#7dd3fc'],['#fb7185','#fcd34d'],['#34d399','#a3e635'],['#f97316','#facc15'],['#38bdf8','#818cf8'],['#e879f9','#fb7185'],['#4ade80','#22d3ee'],['#fde047','#f43f5e'],['#a78bfa','#38bdf8'],['#f472b6','#c084fc'],['#2dd4bf','#a3e635'],['#fb923c','#f43f5e'],['#60a5fa','#34d399']];
+const names=['SLITHER_KING','CHOMP_BOT','BLAZE_WORM','GREEN_MACHINE','NEON_VIPER','PIXEL_COIL','BYTE_ADDER','GLITCH_COBRA','TURBO_TAIL','ZIG_ZAG_ZED','LAVA_LOOP','FROST_FANG','VOID_VIPER','JADE_JAW','SOLAR_SERPENT','NOVA_NAGA','ROSE_RATTLER','MINT_MAMBA','EMBER_EEL','AQUA_ASP'];
+const N=20;
+const rgb=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+const mix=(a,b,t)=>{const A=rgb(a),B=rgb(b);return `rgb(${A.map((x,i)=>Math.round(x+(B[i]-x)*t)).join()})`};
+const fmt=n=>n.toLocaleString('pt-BR');
+const da=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a};
+const logEl=document.getElementById('log'),lines=[];
+function log(c,tag,m){lines.push(`<div><span class="${c}">[${tag}]</span> ${m}</div>`);if(lines.length>7)lines.shift();logEl.innerHTML=lines.join('')}
+let orbs=[],parts=[],snakes=[],mouse=0,cam={x:W/2,y:W/2},leader='';
+function orb(x,y,v,vx,vy){orbs.push({x,y,v:v||1,h:R()*360,r:3+(v||1)*1.4,vx:vx||0,vy:vy||0})}
+function mk(id,x,y,ang,score){const s={id,name:names[id],c:pal[id],ang,score,seg:[],alive:true,boost:false,rad:7};for(let i=0;i<12;i++)s.seg.push({x:x-Math.cos(ang)*i*7,y:y-Math.sin(ang)*i*7});return s}
+function start(){orbs=[];parts=[];snakes=[];
+ for(let i=0;i<800;i++)orb(R()*W,R()*W);
+ snakes[0]=mk(0,W/2,W/2,0,4200);
+ snakes[1]=mk(1,W/2+110,W/2-50,Math.PI,3000);
+ for(let i=2;i<N;i++){const a=R()*6.28,d=250+R()*500;snakes[i]=mk(i,W/2+Math.cos(a)*d,W/2+Math.sin(a)*d,R()*6.28,300+R()*2500)}
+ T=0;leader='';cam={x:W/2,y:W/2};dead.style.display='none';
+ log('g','GAME','Arena iniciada com '+N+' cobras');
+}
+function die(s,k){if(!s.alive)return;s.alive=false;
+ const n=s.seg.length;
+ for(let i=0;i<n;i+=2){const p=s.seg[i],a=R()*6.28,v=1+R()*4;orb(p.x,p.y,2+Math.floor(R()*3),Math.cos(a)*v,Math.sin(a)*v)}
+ parts.push({x:s.seg[0].x,y:s.seg[0].y,r:8,c:s.c[1],l:1});
+ if(s.id===0){log('w','WARN',`Jogador SLITHER_KING eliminado${k?' por '+k.name:''}`);document.getElementById('fin').textContent='Pontuação final: '+fmt(Math.floor(s.score));dead.style.display='grid'}
+ else{log('i','INFO',`Bot ${s.name} eliminated by ${k?(k.id===0?'PLAYER':k.name):'WALL'}`);const id=s.id;setTimeout(()=>{if(snakes[id]&&!snakes[id].alive&&T>0){const a=R()*6.28;snakes[id]=mk(id,W*.15+R()*W*.7,W*.15+R()*W*.7,a,300)}},3000)}
+}
+function ai(s){const h=s.seg[0];let t=null,bd=280*280;
+ for(const o of orbs){const d=(o.x-h.x)**2+(o.y-h.y)**2;if(d<bd){bd=d;t=o}}
+ let w=t?Math.atan2(t.y-h.y,t.x-h.x):s.ang+Math.sin(T/50+s.id)*.4;
+ const fx=h.x+Math.cos(s.ang)*55,fy=h.y+Math.sin(s.ang)*55;
+ out:for(const o of snakes){if(o===s||!o.alive)continue;for(let i=0;i<o.seg.length;i+=3){const p=o.seg[i];if((p.x-fx)**2+(p.y-fy)**2<32*32){w=s.ang+(s.id%2?1.6:-1.6);break out}}}
+ if(h.x<180||h.x>W-180||h.y<180||h.y>W-180)w=Math.atan2(W/2-h.y,W/2-h.x);
+ s.boost=!!t&&bd<90*90&&s.seg.length>20&&R()<.5;
+ s.ang+=Math.max(-.09,Math.min(.09,da(w-s.ang)));
+}
+function step(s){
+ const sp=s.boost&&s.seg.length>14?3.6:2.2,h=s.seg[0];
+ h.x+=Math.cos(s.ang)*sp;h.y+=Math.sin(s.ang)*sp;
+ for(let i=1;i<s.seg.length;i++){const p=s.seg[i-1],q=s.seg[i],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);if(d>7){q.x=p.x-dx/d*7;q.y=p.y-dy/d*7}}
+ const want=12+Math.floor(s.score/150);
+ while(s.seg.length<want){const l=s.seg[s.seg.length-1];s.seg.push({x:l.x,y:l.y})}
+ if(s.boost&&s.seg.length>14&&T%12===0){s.score=Math.max(0,s.score-20);const l=s.seg.pop();orb(l.x,l.y,1)}
+ const rad=s.rad=6+Math.min(8,s.seg.length/25);
+ for(let i=orbs.length-1;i>=0;i--){const o=orbs[i];if((o.x-h.x)**2+(o.y-h.y)**2<(rad+o.r+10)**2){s.score+=o.v*10;orbs.splice(i,1)}}
+ if(h.x<0||h.x>W||h.y<0||h.y>W){die(s,null);return}
+ for(const o of snakes){if(o===s||!o.alive)continue;const lim=(rad+o.rad)*.8;
+  for(let i=0;i<o.seg.length;i+=2){const p=o.seg[i];if((p.x-h.x)**2+(p.y-h.y)**2<lim*lim){die(s,o);return}}}
+}
+function update(){T++;
+ const p=snakes[0];
+ for(const s of snakes){if(!s||!s.alive)continue;if(s.id===0){s.boost=boost&&s.seg.length>14;s.ang+=Math.max(-.12,Math.min(.12,da(mouse-s.ang)))}else ai(s);step(s)}
+ if(T===30&&snakes[1].alive)die(snakes[1],snakes[0]);
+ if(T===100&&snakes[2].alive&&snakes[3].alive)die(snakes[2],snakes[3]);
+ for(const o of orbs)if(o.vx){o.x+=o.vx;o.y+=o.vy;o.vx*=.92;o.vy*=.92;if(Math.abs(o.vx)+Math.abs(o.vy)<.1)o.vx=o.vy=0}
+ while(orbs.length<800)orb(R()*W,R()*W);
+ for(let i=parts.length-1;i>=0;i--){const q=parts[i];q.r+=4;q.l-=.03;if(q.l<=0)parts.splice(i,1)}
+ if(p.alive){cam.x+=(p.seg[0].x-cam.x)*.12;cam.y+=(p.seg[0].y-cam.y)*.12}
+ if(T%120===0){const top=snakes.filter(s=>s.alive).sort((a,b)=>b.score-a.score)[0];
+  if(top&&top.name!==leader){leader=top.name;log('g','GAME',`Player ${top.name} is in first place! (${fmt(Math.floor(top.score))} pts)`)}}
+ if(T%15===0){const top=snakes.filter(s=>s.alive).sort((a,b)=>b.score-a.score).slice(0,5);
+  lb.innerHTML='<b>Placar</b>'+top.map(s=>`<div style="color:${s.c[0]}"><span>${s.name}</span><span>${fmt(Math.floor(s.score))}</span></div>`).join('')}
+}
+function draw(){
+ ctx.fillStyle='#07051a';ctx.fillRect(0,0,VW,VH);
+ const cx=cam.x-VW/2,cy=cam.y-VH/2;
+ ctx.save();ctx.translate(-cx,-cy);
+ ctx.lineWidth=1;
+ ctx.strokeStyle='rgba(0,229,255,.13)';ctx.beginPath();
+ for(let c=Math.floor((cx+cy)/80)*80;c<cx+cy+VW+VH;c+=80){ctx.moveTo(cx,c-cx);ctx.lineTo(cx+VW,c-cx-VW)}ctx.stroke();
+ ctx.strokeStyle='rgba(255,62,165,.13)';ctx.beginPath();
+ for(let c=Math.floor((cx-cy-VH)/80)*80;c<cx-cy+VW;c+=80){ctx.moveTo(cx,cx-c);ctx.lineTo(cx+VW,cx+VW-c)}ctx.stroke();
+ ctx.strokeStyle='#ff3ea5';ctx.lineWidth=5;ctx.strokeRect(0,0,W,W);
+ for(const o of orbs){if(o.x<cx-20||o.x>cx+VW+20||o.y<cy-20||o.y>cy+VH+20)continue;
+  const r=o.r*(1+.3*Math.sin(T/10+o.h)),c=`hsl(${o.h},100%,62%)`;
+  ctx.globalAlpha=.25;ctx.fillStyle=c;ctx.beginPath();ctx.arc(o.x,o.y,r*2.2,0,6.3);ctx.fill();
+  ctx.globalAlpha=1;ctx.beginPath();ctx.arc(o.x,o.y,r,0,6.3);ctx.fill()}
+ for(const q of parts){ctx.globalAlpha=Math.max(0,q.l);ctx.strokeStyle=q.c;ctx.lineWidth=4;ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,6.3);ctx.stroke()}
+ ctx.globalAlpha=1;
+ for(const s of snakes){if(!s||!s.alive)continue;const n=s.seg.length;
+  for(let i=n-1;i>=0;i--){const p=s.seg[i];if(p.x<cx-30||p.x>cx+VW+30||p.y<cy-30||p.y>cy+VH+30)continue;
+   const t=i/n,col=mix(s.c[0],s.c[1],t),r=s.rad*(1-.3*t);
+   ctx.globalAlpha=.18;ctx.fillStyle=col;ctx.beginPath();ctx.arc(p.x,p.y,r*1.7,0,6.3);ctx.fill();
+   ctx.globalAlpha=1;ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.3);ctx.fill()}
+  const h=s.seg[0],px=-Math.sin(s.ang),py=Math.cos(s.ang);
+  ctx.fillStyle='#fff';for(const k of[-1,1]){ctx.beginPath();ctx.arc(h.x+Math.cos(s.ang)*s.rad*.4+px*k*s.rad*.5,h.y+Math.sin(s.ang)*s.rad*.4+py*k*s.rad*.5,s.rad*.3,0,6.3);ctx.fill()}
+  if(s.boost){ctx.strokeStyle=s.c[0];ctx.lineWidth=2;ctx.beginPath();ctx.arc(h.x,h.y,s.rad*2,0,6.3);ctx.stroke()}
+  if(s.id===0){const y=h.y-s.rad-16;ctx.fillStyle='#ffd000';ctx.beginPath();ctx.moveTo(h.x-9,y+9);ctx.lineTo(h.x-9,y);ctx.lineTo(h.x-4,y+5);ctx.lineTo(h.x,y-3);ctx.lineTo(h.x+4,y+5);ctx.lineTo(h.x+9,y);ctx.lineTo(h.x+9,y+9);ctx.closePath();ctx.fill()}
+  ctx.fillStyle='#fff';ctx.font='bold 11px system-ui,sans-serif';ctx.textAlign='center';ctx.fillText(s.name,h.x,h.y-s.rad-(s.id===0?22:8));
+ }
+ ctx.restore();
+}
+let boost=false;const dead=document.getElementById('dead'),lb=document.getElementById('lb');
+function aim(x,y){const r=cv.getBoundingClientRect();mouse=Math.atan2(y-r.top-VH/2,x-r.left-VW/2)}
+cv.addEventListener('pointermove',e=>aim(e.clientX,e.clientY));
+cv.addEventListener('pointerdown',e=>{aim(e.clientX,e.clientY);if(e.pointerType==='mouse')boost=true});
+addEventListener('pointerup',()=>boost=false);
+addEventListener('keydown',e=>{if(e.code==='Space'){boost=true;e.preventDefault()}});
+addEventListener('keyup',e=>{if(e.code==='Space')boost=false});
+const bt=document.getElementById('bt');bt.addEventListener('pointerdown',e=>{e.stopPropagation();boost=true});
+document.getElementById('rs').onclick=start;
+start();
+(function loop(){update();draw();requestAnimationFrame(loop)})();
+</script>
+</body>
+</html>
