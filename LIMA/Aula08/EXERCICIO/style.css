@@ -1,0 +1,68 @@
+/* EXERCÍCIO 01 */
+.equipe {
+  display: flex;
+  list-style: none;
+}
+
+/* EXERCÍCIO 02 */
+.equipe1 {
+  display: flex;
+  list-style: none;
+  gap: 30px; 
+}
+
+/* EXERCÍCIO 03 */
+.equipe2 {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.equipe3 {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: center;
+}
+
+.equipe4 {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.equipe5 {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.equipe6 {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+/* exercicio 4 */
+.painel {
+  display: flex;
+  gap: 20px;
+  height: 250px; 
+  align-items: center; 
+
+}
+
+.b1 { align-items: center; }
+.b2 { align-items: flex-end; } 
+.b3 { align-items: flex-start;} 
+
+/* exercico 5  */
+.cards {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
