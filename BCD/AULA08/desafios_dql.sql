@@ -61,9 +61,7 @@ USE smartcoffe_dml_vini;
 
 
 ------------------------- EX1 --------------------------------------
-
 SELECT * FROM cliente;
-
 ------------------------- EX2 ----------------------------------------
 
 SELECT nome, cidade, email FROM cliente;
@@ -120,4 +118,4 @@ FROM (SELECT cidade, COUNT(*) AS total_clientes
 WHERE total_clientes >= 2;
 
 --------------------------------------------------- EX15 ---------------------------------------------
-SELECT SUM(valor_total) AS faturamento_total FROM pedido WHERE status_pedido = 'FINALIZADO';
+SELECT SUM(valor_total) AS faturamento_total FROM pedido WHERE status_pedido = 'FINALIZADO';1
