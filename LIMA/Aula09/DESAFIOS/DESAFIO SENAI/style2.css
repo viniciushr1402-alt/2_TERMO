@@ -1,0 +1,27 @@
+.baka {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .baka {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .baka {
+    grid-template-columns: 1fr;
+  }
+}
+.baka {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+  gap: 24px;                                                   
+  list-style: none;
+  padding: 0;
+}
+
