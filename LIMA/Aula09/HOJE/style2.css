@@ -1,0 +1,23 @@
+.grid-c {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.grid-1{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+@media (max-width: 100px) {
+    .grid-c {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .grid-1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

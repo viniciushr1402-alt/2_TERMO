@@ -1,0 +1,40 @@
+.grade-exercicio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+.grade-exercicio2 {
+    display: grid;
+    grid-template-columns: 1fr, 2fr;
+    gap: 20px;
+}
+.grade-exercicio3 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* DESKTOP */
+.grade-exercicio4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+ }
+ /* TABLET */
+@media (max-width: 900px) {
+  .grade-exercicio4J {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* CELULAR */
+@media (max-width: 600px) {
+  .grade-exercicio4G {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grade-exercicio5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}

@@ -105,7 +105,6 @@ SELECT COUNT(*) AS total_produtos FROM produto;
 
 ------------------------------ EX12 -----------------------------------------------
 
-
 SELECT MIN(preco) AS menor_preco, MAX(preco) AS maior_preco, AVG(preco) AS preco_medio FROM produto;
 ----------------------------------- EX13 --------------------------------------------------
 SELECT cidade, COUNT(*) AS total_cliente FROM cliente GROUP BY cidade;
