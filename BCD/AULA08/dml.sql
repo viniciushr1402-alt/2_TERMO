@@ -1,272 +1,312 @@
 -- Active: 1788435082238@@127.0.0.1@3306@smartcoffe_dml_vini
-
 -- DQL - DATA QUERY LANGUAGE
+-- BANCO: smartcoffe_dml_vini
 
 -- ANTES DE INICIAR
+INSERT INTO cliente (nome, email, telefone, cidade, ativo)
+VALUES ('Ana Flavia', 'anaf@gmail.com', '199984512456', 'Campinas', TRUE);
 
-INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES ('Ana Flavia', 'anaf@gmail.com','199984512456','Campinas',TRUE);
 
--- EX 1: SELECT SIMPLES OU CONSULTA SIMPLES
--- ESTRUTURA SELECT COMO EXEMPLO
--- SELECT FROM tabela;
-
-SELECT * 
+-- EX 1: SELECT SIMPLES
+SELECT *
 FROM cliente;
-
-
--- CONSULTAR TODAS AS COLUNAS
 
 SELECT nome, telefone
 FROM cliente;
 
--- consultar colunas ou campos
 
--- Ex 2: AS COM AS COMO APELIDO AS COLUNAS
-
+-- EX 2: AS - APELIDOS DE COLUNAS
 SELECT nome AS Nome_Cliente
 FROM cliente;
 
 SELECT email AS Email_Cliente, telefone AS Zap
 FROM cliente;
 
--- Ex 3: DISTINC - 
 
+-- EX 3: DISTINCT
 SELECT DISTINCT cidade
 FROM cliente;
 
--- SEM DISTINCT O RESULTADO IRA SE REPETIR VARIAS VEZES E COM SO UMA VEZ
 
--- EX 4: WHERE - FILTRO POR REGISTROS
--- IREMOS DEFINIR CONDIÇOES
--- = IGUAL
--- <> ou != DIFERENTE
--- > MAIOR QUE
--- >= MAIOR OU IGUAL
--- < MENOR QUE
--- <= MENOR IGUAL
-
+-- EX 4: WHERE - FILTRO DE REGISTROS
 SELECT nome, preco
 FROM produto
 WHERE preco > 10.00;
--- CONSULTA PARA VALORES ACIMA DE 10.00 REAIS
 
 SELECT nome, ativo
 FROM cliente
 WHERE ativo = TRUE;
--- CONSULTA STATUS DE CLIENTES SE ESTÁ ATIVO OU INATIVO
 
 SELECT id_pedido, data_pedido, valor_total
 FROM pedido
 WHERE valor_total > 25.00;
--- CONSULTA PEDIDOS ACIMA DE DETERMINADO VALOR
 
--- EX 5: USO DO AND, OR E NOT
 
--- AND TODAS AS CONDIÇOES VERDADEIRAS
-
+-- EX 5: AND, OR E NOT
 SELECT nome, preco
 FROM produto
 WHERE preco >= 8.00 AND preco <= 25.00;
--- OR PELO MENOS UMA CONDIÇÃO VERDADEIRA
-SELECT nome, cidade 
+
+SELECT nome, cidade
 FROM cliente
 WHERE cidade = 'Limeira' OR cidade = 'Piracicaba';
 
--- not nao ira buscar ou consultar o valor desejado
 SELECT nome, cidade
 FROM cliente
 WHERE NOT cidade = 'Limeira';
-
--- EXTRA - UTILIZANDO AND E OR JUNTOOS SEPARAR POR ()
 
 SELECT nome, cidade, ativo
 FROM cliente
 WHERE ativo = TRUE
 AND (cidade = 'Limeira' OR cidade = 'Piracicaba');
 
--- ex 6: BETWEEN - ENTRE DOIS VALORES
--- LIMITE INICIAL E FINAL
 
+-- EX 6: BETWEEN
 SELECT nome, preco
-FROM produto 
+FROM produto
 WHERE preco BETWEEN 8.00 AND 15.00;
-
--- VALORES ENTRE 8 E 15
 
 SELECT id_pedido, data_pedido, valor_total
 FROM pedido
-WHERE data_pedido BETWEEN '2026-09-01 00:00:00' AND '2026-09-30 23:59:00';
--- CONSULTA POR DATAS
+WHERE data_pedido BETWEEN '2026-09-01 00:00:00'
+AND '2026-09-30 23:59:59';
 
--- EX 7: IN VARIAS POSSIBILIDADES
+
+-- EX 7: IN E NOT IN
 SELECT nome, cidade
 FROM cliente
-WHERE cidade IN ('Limeira','Campinas','Americana','Piracicaba');
--- CONSULTA COM VARIAS CONDIÇOES E DIMINUINDO O USO DO OR
+WHERE cidade IN ('Limeira', 'Campinas', 'Americana', 'Piracicaba');
 
 SELECT nome, cidade
 FROM cliente
-WHERE cidade NOT IN ('Limeira','Piracicaba');
+WHERE cidade NOT IN ('Limeira', 'Piracicaba');
 
--- CONSULTA COM EXESSÃO DOS VALORES ESPECIFICADOS
 
--- EX 8; LIKE - PESQUISAR POR TEXTOS
--- CORINGAS 
--- % VÁRIOS CARACTERES
--- _ EXATAMENTE UM CHARACTER
-
+-- EX 8: LIKE
 SELECT nome
 FROM produto
 WHERE nome LIKE 'Café%';
 
--- CONSULTA COM TODOS OS PRODUTOS QUE TENHAM A MESMA PALAVRA
-
-SELECT nome 
+SELECT nome
 FROM produto
 WHERE nome LIKE '%chocolate%';
--- CONSULTA TODOS OS PRODUTOS QUE POSSUAM A PALAVRA DESEJADA
-
-SELECT nome  
-FROM cliente   
-WHERE nome LIKE '%Silva';
--- CONSULTA CLIENTES QUE TERMINAM COM A PALAVRA DESEJADA
 
 SELECT nome
-FROM cliente  
+FROM cliente
+WHERE nome LIKE '%Silva';
+
+SELECT nome
+FROM cliente
 WHERE nome LIKE '%Si_va';
 
--- CONSULTA ESPECIFICAMENTE O CARACTER QUE NÃO SE LEMBRA
 
--- NULL -- AUSENCIA DE VALORES
-
-
--- EX 9: NULL - AUSENCIA DE VALORES
+-- EX 9: NULL
 SELECT nome, telefone
-FROM cliente 
+FROM cliente
 WHERE telefone IS NULL;
--- CONSULTA CAMPOS QUE POSSUEM O NULL
+
 SELECT nome, telefone
 FROM cliente
 WHERE telefone IS NOT NULL;
--- CONSULTA CAMPOS QUE NAO SAO MAIS NULL
 
--- EX 10: ORDER BY - ORDENANDO RESULTADOS
--- ASC CRESCENTE 
--- DESC DECRESCENTE
 
-SELECT nome, preco   
+-- EX 10: ORDER BY
+SELECT nome, preco
 FROM produto
 ORDER BY preco ASC;
 
--- FORMA CRESCENTE
-
-
-SELECT nome, preco   
+SELECT nome, preco
 FROM produto
 ORDER BY preco DESC;
 
--- FORMA DECRESCENTE
-
-SELECT cidade, nome 
+SELECT cidade, nome
 FROM cliente
 ORDER BY cidade ASC, nome DESC;
 
--- CONSULTA POR MAIS DE UMA COLUNA
 
-
--- EX 11: LIMIT - LIMITAR QUANTIDADE DE LINHAS
-
-SELECT nome, preco     
+-- EX 11: LIMIT
+SELECT nome, preco
 FROM produto
 ORDER BY preco DESC
 LIMIT 10;
 
--- CONSULTAR APENAS UMA QUANTIDADE ESPECIFICA DE LINHAS
-
-SELECT nome, preco    
+SELECT nome, preco
 FROM produto
 ORDER BY nome
 LIMIT 5 OFFSET 5;
 
--- CONSULTAR COM LIMITE DE VALORWS E LINHAS 
 
--- EX 12; CALCULO DE COLUNAS
+-- EX 12: CÁLCULO DE COLUNAS
 SELECT nome, preco, preco * 1.10 AS preco_ajustado
 FROM produto;
 
-SELECT id_item, quantidade, preco_unitario, quantidade * preco_unitario AS Sub_total
+SELECT id_item, quantidade, preco_unitario,
+       quantidade * preco_unitario AS Sub_total
 FROM item_pedido;
 
--- EX 13: FUNÇÕES PARA CONSULTAS
+
+-- EX 13: FUNÇÕES
 -- TEXTOS
-
-SELECT UPPER(nome) AS Nome_Cliente, LOWER(email) AS Email_Cliente
+SELECT UPPER(nome) AS Nome_Cliente,
+       LOWER(email) AS Email_Cliente
 FROM cliente;
 
-SELECT CONCAT(nome, '---', cidade) AS Cidade_Clientesl
+SELECT CONCAT(nome, ' --- ', cidade) AS Cidade_Clientes
 FROM cliente;
--- CONCAT concatenação de valores
 
--- NUMEROS
-SELECT nome, preco, ROUND(preco * 0.90, 2) AS Preco_Desconto
+-- NÚMEROS
+SELECT nome, preco,
+       ROUND(preco * 0.90, 2) AS Preco_Desconto
 FROM produto;
 
--- DATAS 
-SELECT id_pedido, data_pedido, DATE(data_pedido) AS Datas, MONTH (data_pedido) AS Mês, YEAR(data_pedido) AS Ano, DAY (data_pedido) as dia, TIME(data_pedido) as horario 
+-- DATAS
+SELECT id_pedido, data_pedido,
+       DATE(data_pedido) AS Data,
+       MONTH(data_pedido) AS Mes,
+       YEAR(data_pedido) AS Ano,
+       DAY(data_pedido) AS Dia,
+       TIME(data_pedido) AS Horario
 FROM pedido;
 
--- COALESCE - SUBSTITUIR A INFORMAÇÃO QUE DEIXAMOS EM NULL OU NÃO DEIXAMOS
-SELECT nome, COALESCE(telefone, 'Não Informado') AS telefone
+-- COALESCE
+SELECT nome,
+       COALESCE(telefone, 'Não Informado') AS telefone
 FROM cliente;
+
 
 -- EX 14: FUNÇÕES DE AGRUPAMENTO
--- COUNT - CONTAR QUANTOS REGISTROS EXISTEM
--- SUM - SOMA DE VALORES
--- AVG - MÉDIA DE VALORES
--- MIN - MENOR VALOR
--- MAX - MAIOR VALOR
-
 SELECT COUNT(*) AS TOTAL_CLIENTES
 FROM cliente;
--- CONTAR QUANTOS CLIENTES EXISTEM
 
-SELECT AVG(preco) AS MEDIA_PREÇOS
+SELECT AVG(preco) AS MEDIA_PRECOS
 FROM produto;
--- CALCULAR A MEDIA DOS PREÇOS
 
-SELECT MIN(preco) AS MENOR_PREÇO, MAX(preco) AS MEDIA_PREÇO
+SELECT MIN(preco) AS MENOR_PRECO,
+       MAX(preco) AS MAIOR_PRECO
 FROM produto;
--- RESUMO DOS PREÇOS
 
-SELECT SUM(valor_total) AS Faturamento_Mensal
+SELECT SUM(valor_total) AS Faturamento_Total
 FROM pedido
 WHERE status_pedido = 'FINALIZADO';
 
--- EX 15: AGRUPAR DADOS
+
+-- EX 15: GROUP BY
 SELECT cidade, COUNT(*) AS Quantidade_Clientes
 FROM cliente
 GROUP BY cidade;
 
-SELECT id_categoria, COUNT(*) AS QTDE_CLIENTES
-FROM cliente 
-GROUP BY cidade
-HAVING COUNT(*) >=2;
-
--- EX 16: HAVING - FILTRO POR GRUPOS
--- WHERE - FILTRA LINHAS ANTES DO GROUP BY
--- HAVING - FILTRA LINHAS DEPOIS DO GROUP BY
-
+-- CORRIGIDO: CONTAGEM DE CLIENTES POR CIDADE
 SELECT cidade, COUNT(*) AS QTDE_CLIENTES
 FROM cliente
 GROUP BY cidade
 HAVING COUNT(*) >= 2;
--- CIDADES COM PELO MENOS DOIS CLIENTES
 
--- EX 17: ORDEM DE CRIAÇÃO DE UMA CONSULTA COMPLETA
-SELECT colunas
-FROM tabela
-WHERE condicao
-GROUP BY colunas_agrupar
-HAVING condicao_agrupar
-ORDER BY colunas
-LIMIT quantidade;
+
+-- EX 16: HAVING
+SELECT cidade, COUNT(*) AS QTDE_CLIENTES
+FROM cliente
+GROUP BY cidade
+HAVING COUNT(*) >= 2;
+
+
+-- EX 17: ORDEM DE UMA CONSULTA COMPLETA
+-- Exemplo de estrutura:
+-- SELECT coluna
+-- FROM tabela
+-- WHERE condicao
+-- GROUP BY coluna
+-- HAVING condicao
+-- ORDER BY coluna
+-- LIMIT quantidade;
+
+
+-- PARTE II: JOINS
+
+-- EX 1: INNER JOIN
+-- PEDIDOS COM O NOME DO CLIENTE
+SELECT P.ID_PEDIDO,
+       P.DATA_PEDIDO,
+       C.NOME AS CLIENTE,
+       P.VALOR_TOTAL
+FROM PEDIDO AS P
+INNER JOIN CLIENTE AS C
+    ON C.ID_CLIENTE = P.ID_CLIENTE;
+
+
+-- EX 2: LEFT JOIN
+-- TODOS OS CLIENTES, INCLUSIVE QUEM NUNCA COMPROU
+SELECT C.NOME,
+       P.ID_PEDIDO,
+       P.DATA_PEDIDO
+FROM CLIENTE AS C
+LEFT JOIN PEDIDO AS P
+    ON P.ID_CLIENTE = C.ID_CLIENTE
+ORDER BY C.NOME;
+
+
+-- DESCOBRINDO CLIENTES SEM PEDIDOS
+-- DESCOBRINDO CLIENTES SEM PEDIDOS
+SELECT C.ID_CLIENTE, C.NOME
+FROM CLIENTE AS C
+LEFT JOIN PEDIDO AS P
+ON P.ID_CLIENTE = C.ID_CLIENTE
+WHERE P.ID_PEDIDO IS NULL;
+
+
+-- EX 3: JOIN COM TRÊS TABELAS
+-- ITENS DE PEDIDO COM NOME DO PRODUTO
+SELECT P.ID_PEDIDO,
+       PR.NOME AS PRODUTO,
+       IP.QUANTIDADE,
+       IP.PRECO_UNITARIO,
+       IP.QUANTIDADE * IP.PRECO_UNITARIO AS SUBTOTAL
+FROM PEDIDO AS P
+INNER JOIN ITEM_PEDIDO AS IP
+    ON IP.ID_PEDIDO = P.ID_PEDIDO
+INNER JOIN PRODUTO AS PR
+    ON PR.ID_PRODUTO = IP.ID_PRODUTO
+ORDER BY P.ID_PEDIDO;
+
+-- EX 4: JOIN COM CATEGORIA
+-- PRODUTO E NOME DE SUA CATEGORIA
+SELECT PR.NOME AS PRODUTO, C.NOME AS CATEGORIA, PR.PRECO
+FROM PRODUTO AS PR
+INNER JOIN CATEGORIA AS C
+ON C.ID_CATEGORIA = PR.ID_CATEGORIA
+ORDER BY C.NOME, PR.NOME;
+
+-- EX 5: AGREGAÇÃO + JOIN
+-- QUANTIDADE DE PRODUTOS POR CATEGORIA
+SELECT C.NOME AS CATEGORIA, COUNT(PR.ID_produto) AS QTDE_PRODUTOS
+FROM CATEGORIA AS C
+LEFT JOIN PRODUTO AS PR
+ON PR.ID_CATEGORIA = C.ID_CATEGORIA
+GROUP BY C.NOME;
+
+-- TOTAL COMPRADO POR CLIENTE
+SELECT C.NOME AS CLIENTE, 
+       COUNT(P.ID_PEDIDO) AS QTDE_PEDIDOS,
+       SUM(P.VALOR_TOTAL) AS TOTAL_COMPRADO
+FROM CLIENTE AS C
+LEFT JOIN PEDIDO AS P 
+    ON P.ID_CLIENTE = C.ID_CLIENTE AND P.STATUS_pedido = 'ABERTO'
+GROUP BY C.ID_CLIENTE, C.NOME
+ORDER BY TOTAL_COMPRADO DESC;
+
+-- EX 6: RELATÓRIO COMPLETO DO PEDIDO
+SELECT P.ID_PEDIDO, 
+       DATE_FORMAT(P.DATA_PEDIDO, '%d %m %Y %H:%i') AS DATA, 
+       C.NOME AS CLIENTE, 
+       PR.NOME AS PRODUTO, 
+       IP.QUANTIDADE, 
+       IP.PRECO_UNITARIO, 
+       IP.QUANTIDADE * IP.PRECO_UNITARIO AS SUBTOTAL
+FROM PEDIDO AS P
+INNER JOIN CLIENTE AS C
+    ON C.ID_CLIENTE = P.ID_CLIENTE
+INNER JOIN ITEM_PEDIDO AS IP
+    ON IP.ID_PEDIDO = P.ID_PEDIDO
+INNER JOIN PRODUTO AS PR
+    ON PR.ID_PRODUTO = IP.ID_PRODUTO
+ORDER BY P.ID_PEDIDO, PR.NOME;
+
