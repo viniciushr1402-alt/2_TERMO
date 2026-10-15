@@ -86,14 +86,13 @@ SELECT * FROM pedido WHERE id_pedido = @pedido_com_erro;
 -- Explique em comentário por que foi bloqueado.
 
 -- DELETE FROM categoria WHERE id_categoria = 1;
--- Explicação em comentário: Foi bloqueado pela regra de integridade referencial (RESTRICT/NO ACTION) da chave estrangeira, impedindo a exclusão de registros pais que possuem dependentes para preservar o histórico.
+-- Explicação em comentário: Foi bloqueado pela regra de integridade referencial (RESTRICT/NO ACTION) da chave estrangeira E impedindo a exclusão de registros pais que possuem dependentes para preservar o histórico.
 
 -- 25. Crie em uma transação um pedido temporário com dois itens,
 -- exclua o pedido e observe ON DELETE CASCADE.
 -- Finalize com ROLLBACK para preservar a base.
 
--- exclua o pedido e observe ON DELETE CASCADE.
--- Finalize com ROLLBACK para preservar a base.
+
 
 
 
