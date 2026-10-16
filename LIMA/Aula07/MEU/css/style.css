@@ -1,192 +1,210 @@
-/* ==========================================================================
-   SMARTCOFFEE - CSS ENXUTO & RESPONSIVO
-   ========================================================================== */
-
-/* 1. PALETA DE CORES & VARIÁVEIS DE ESTILO */
 :root {
-    --bg-pagina: #f7f7f7;
-    --texto: #333333;
-    --rosa-principal: #ebd0d9;
-    --verde-botao: #48a999;
-    --verde-hover: #358275;
-    --verde-escuro: #21584c;
-    --amarelo-destaque: #e6df9a;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    --branco: #ffffff;
+    --borda-card: #e0dbd1;
+    --caramelo: #22c59f; 
+    --rosa-pastel: #eec0c8;
+    --verde-agua: #48a999;
+    --amarelo-pastel:#e2d992;
+    --fundo-creme: #fdfbf7;
+    --texto-principal: #222222;
+    
 }
 
 body {
-    background-color: var(--bg-pagina);
-    color: var(--texto);
-    line-height: 1.5;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: var(--fundo-creme);
+    color: var(--texto-principal);
+    margin: 0;
+    padding: 0;
 }
 
-/* 2. REGRA GLOBAL DE ESPAÇAMENTO (Substitui as dezenas de margins repetidas) */
-.Comeco, .banner, .sobre, .cafes, .ambiente, .contato, footer {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
+h1 {
+    font-size: 32px;
 }
 
-/* Alinhamento base de duas colunas */
-.Comeco, .banner, .sobre, .ambiente, .contato, footer {
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: 0;
+}
+
+header {
+    background-color: var(--verde-agua);
+    padding: 15px 30px;
+}
+
+.Comeco {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
 }
 
-.banner > div, .sobre > div, .ambiente > div, .contato > div {
-    flex: 1;
+.Comeco h2 {
+    margin: 0;
+    color: var(--texto-principal);
 }
 
-/* 3. NAVEGAÇÃO E CABEÇALHO */
-header {
-    background-color: var(--rosa-principal);
-    border-bottom: 2px solid #d0b0bd;
-}
-
-header .Comeco {
-    margin: 0 auto;
-    padding: 20px;
-}
-
-nav ul, .footer-social ul {
+nav ul {
     display: flex;
-    list-style: none;
-    gap: 15px;
-}
-
-nav a, .footer-social a {
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* 4. BOTÕES E IMAGENS */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--verde-botao);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-}
-
-.btn:hover {
-    background-color: var(--verde-hover);
-}
-
-/* Placeholders de imagem agrupados */
-.banner-image, .sobre-img, .ambiente-img, .card-img {
-    background-color: var(--amarelo-destaque);
-    border: 2px solid #333333;
-    border-radius: 8px;
-    height: 180px;
-}
-
-/* 5. SEÇÕES & PRODUTOS (CSS GRID) */
-.secao-cabecalho {
-    background-color: var(--rosa-principal);
-    padding: 12px 20px;
-    margin-bottom: 25px;
-    border-radius: 6px;
-}
-
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Auto-fit fluido */
     gap: 20px;
 }
 
-.card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #dddddd;
+nav a {
+    color: var();
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--verde-agua);
+}
+
+section {
+    padding: 40px 30px;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.banner-conteudo {
+    flex: 1;
+}
+
+.banner-conteudo p {
+    color: var(--verde-agua);
+    font-weight: bold;
+}
+
+.banner-image {
+    flex: 1;
+    background-color: var(--amarelo-pastel);
+    height: 220px;
+    border: 1px solid #d4cca8;
+    border-radius: 6px;
+}
+
+.sobre {
+    background-color: #f7f2ea;
     text-align: center;
 }
 
-.card .card-img {
-    height: 120px;
-    margin-bottom: 12px;
+.sobre-conteudo p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.card .btn {
-    width: 100%;
-    margin-top: 10px;
+.secao-cabecalho {
+    background-color: var(--rosa-pastel);
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 4px;
 }
 
-/* 6. FORMULÁRIO DE CONTATO */
-.contato-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.contato-form label { display: none; }
-
-.contato-form input, 
-.contato-form textarea {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--verde-escuro);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
+.secao-cabecalho p {
+    margin: 0;
     font-size: 14px;
 }
 
-.contato-form input::placeholder, 
-.contato-form textarea::placeholder {
-    color: #ffffff;
+.secao-cabecalho h2 {
+    margin: 5px 0 0 0;
 }
 
-.contato-form textarea {
-    height: 80px;
-    resize: none;
+.cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
 }
 
-/* 7. RODAPÉ */
+.card {
+    flex: 1;
+    background-color: var(--branco);
+    border: 1px solid var(--borda-card);
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+   
+   
+}
+.card-img {
+    background-color: var(--amarelo-pastel);
+    height: 140px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--caramelo);
+    color: var(--branco);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #a67247;
+}
+
+.contato-cabecalho {
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 500px;
+    background-color: var(--branco);
+    padding: 20px;
+    border: 1px solid var(--borda-card);
+    border-radius: 6px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    height: 100px;
+}
+
 footer {
-    border-top: 2px solid #cccccc;
-    padding-top: 20px;
+    background-color: var(--rosa-pastel);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
 }
 
-.footer-social ul li a {
-    padding: 8px 16px;
-    background-color: var(--verde-botao);
-    color: #ffffff;
-    border-radius: 20px;
+footer nav ul {
+    gap: 15px;
 }
-
-/* 8. RESPONSIVIDADE (Ecrãs menores) */
-@media (max-width: 768px) {
-    .Comeco, .banner, .sobre, .ambiente, .contato, footer {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .banner-image, .sobre-img, .ambiente-img {
-        width: 100%;
-    }
-}
-
-
-FAÇA MAIOR O NEGOCIO TA MUITO CURTO
