@@ -101,6 +101,9 @@ WHERE ano_publicacao >= 2020;
 -- 11. DELETE e integridade
 INSERT INTO USUARIO (nome, email, telefone, ativo) VALUES ('User Teste', 'teste@email.com', NULL, TRUE);
 
+--  O comando acima falha e resulta no erro "Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails...". 
+-- Isso ocorre porque definimos a FK com a regra implícita ON DELETE  O sistema impede a exclusão do usuário para não deixar registros órfãos na tabela EMPRESTIMO, mantendo a integridade referencial 
+
 DELETE FROM USUARIO WHERE email = 'teste@email.com';
 
 -- 12. SELECT básico

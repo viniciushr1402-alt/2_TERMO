@@ -120,5 +120,3 @@ WHERE total_clientes >= 2;
 SELECT SUM(valor_total) AS faturamento_total FROM pedido WHERE status_pedido = 'FINALIZADO';
 
 
-
-
