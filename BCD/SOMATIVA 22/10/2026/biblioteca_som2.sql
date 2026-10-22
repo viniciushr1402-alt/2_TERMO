@@ -99,3 +99,37 @@ SELECT titulo, autor, quantidade_disponivel
 FROM LIVRO;
  
 --  13. WHERE + ORDER BY
+SELECT id_livro, titulo, quantidade_disponivel 
+FROM LIVRO 
+WHERE quantidade_disponivel > 2 
+ORDER BY quantidade_disponivel DESC;
+
+-- 14. LIKE
+SELECT id_livro, titulo, autor 
+FROM LIVRO 
+WHERE titulo LIKE '%Dados%';
+
+-- 15. BETWEEN
+SELECT id_livro, titulo, quantidade_disponivel 
+FROM LIVRO 
+WHERE ano_publicado BETWEEN 2015 AND 2025;
+
+-- 16. Funções agregadas
+SELECT 
+    COUNT(*) AS total_titulos,
+    SUM(quantidade_disponivel) AS total_exemplares_estoque,
+    AVG(quantidade_disponivel) AS media_exemplares,
+    MIN(quantidade_disponivel) AS menor_estoque,
+    MAX(quantidade_disponivel) AS maior_estoque
+FROM LIVRO;
+
+-- 17. INNER JOIN
+SELECT 
+    E.id_emprestimo,
+    U.nome AS nome_usuario,
+    L.titulo AS titulo_livro,
+    E.data_emprestimo,
+    E.status_emprestimo,
+FROM EMPRESTIMO E
+INNER JOIN USUARIO U ON E.id_usuario = U.id_usuario,
+INNER JOIN LIVRO L ON E.id_livro = L.id_livro;
