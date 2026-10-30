@@ -1,0 +1,25 @@
+:root {
+    --fundo: #090A16;
+    --fundo-2: #101225;
+    --painel: #171A31;
+
+    --texto: #FFF7E6;
+    --texto-suave: #C7CADB;
+
+    --magenta: #FF3D81;
+    --ciano: #18D9FF;
+    --amarelo: #FFD84D;
+    --roxo: #6D4AFF;
+    --laranja: #FF7A33;
+
+    --borda:
+        rgba(255, 255, 255, 0.12);
+
+    --sombra:
+        0 28px 70px
+        rgba(0, 0, 0, 0.34);
+
+    --raio:
+        20px;
+}
+

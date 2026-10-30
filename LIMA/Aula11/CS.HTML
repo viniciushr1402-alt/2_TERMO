@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nostalgia Play</title>
+    <style>
+        :root {
+            --bg-color: #0b0c16;
+            --card-bg: #121426;
+            --text-color: #ffffff;
+            --text-muted: #8b92b6;
+            --pink: #ff2a74;
+            --blue: #00d2ff;
+            --yellow: #ffdf00;
+            --purple: #7026ff;
+            --gradient: linear-gradient(90deg, #ff2a74, #7026ff);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 60px;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            border-bottom: 1px solid #1a1d36;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-color);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            color: var(--blue);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero / Seção Principal */
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--pink);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 300px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid #1a1d36;
+        }
+
+        /* Elementos Geométricos Simulados */
+        .circle-big {
+            width: 150px;
+            height: 150px;
+            border: 8px solid var(--blue);
+            border-radius: 50%;
+        }
+
+        /* Grid de Cards (2 colunas) */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* Grid de Cards (3 colunas) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid #1a1d36;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-tag {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-dot {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        /* Cores customizadas para os blocos */
+        .bg-purple { background-color: var(--purple); }
+        .bg-pink { background-color: var(--pink); }
+        .bg-blue { background-color: var(--blue); }
+        .bg-yellow { background-color: var(--yellow); }
+
+        /* Seção Novas Produções (Layout Assimétrico) */
+        .asymmetric-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+        }
+
+        .asymmetric-left .card {
+            margin-bottom: 20px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100px;
+            padding: 20px 30px;
+        }
+
+        .asymmetric-left .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .asymmetric-left .badge-dot {
+            position: relative;
+            top: 0;
+            right: 0;
+        }
+
+        .list-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #1a1d36;
+        }
+
+        .list-num {
+            color: var(--pink);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Banner Final */
+        .footer-banner {
+            background: var(--gradient);
+            padding: 60px 5%;
+            text-align: center;
+            border-radius: 0px;
+            margin-top: 40px;
+        }
+
+        .footer-banner h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-container, .grid-2, .grid-3, .asymmetric-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">NOSTALGIA <span>PLAY</span></div>
+        <nav>
+            <a href="#" class="active">INÍCIO</a>
+            <a href="#">CLÁSSICOS</a>
+            <a href="#">SÉRIES</a>
+            <a href="#">MAIS</a>
+        </nav>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero-container">
+        <div class="hero-text">
+            <span class="section-tag">Anos 80, 90 e 2000</span>
+            <h1>HISTÓRIAS QUE ATRAVESSARAM GERAÇÕES.</h1>
+            <p>Uma viagem pelos 23 anos de animações marcantes que moldaram a infância de gerações inteiras de fãs dedicados.</p>
+            <a href="#" class="btn">EXPLORAR AGORA</a>
+        </div>
+        <div class="hero-visual">
+            <div class="circle-big"></div>
+        </div>
+    </section>
+
+    <!-- Seção Clássicos -->
+    <section>
+        <span class="section-tag">Antes que seja tarde</span>
+        <h2 class="section-title">CLÁSSICOS QUE CHEGARAM PARA FICAR</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div class="badge-dot bg-blue"></div>
+                <div class="card-tag">ANIME</div>
+                <div class="card-title">CAVALEIROS DO ZODÍACO</div>
+            </div>
+            <div class="card">
+                <div class="badge-dot bg-yellow"></div>
+                <div class="card-tag">ANIMAÇÃO</div>
+                <div class="card-title">CAVERNA DO DRAGÃO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Heróis -->
+    <section>
+        <span class="section-tag">Trilha Especial</span>
+        <h2 class="section-title">HERÓIS QUE DOMINARAM A TV</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="badge-dot bg-pink"></div>
+                <div class="card-tag">METAL HERO</div>
+                <div class="card-title">JASPION</div>
+            </div>
+            <div class="card">
+                <div class="badge-dot bg-blue"></div>
+                <div class="card-tag">MEGA HERO</div>
+                <div class="card-title">JIRAIYA</div>
+            </div>
+            <div class="card">
+                <div class="badge-dot bg-yellow"></div>
+                <div class="card-tag">TOKUSATSU</div>
+                <div class="card-title">KAMEN RIDER BLACK</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Novas Produções (Assimétrica) -->
+    <section>
+        <span class="section-tag">O Passado Deixou Legado</span>
+        <h2 class="section-title">NOVAS PRODUÇÕES,<br>VELHAS EMOÇÕES</h2>
+        
+        <div class="asymmetric-section">
+            <div class="asymmetric-left">
+                <div class="card" style="background-color: #ffdf00; color: #000;">
+                    <div class="card-content">
+                        <span class="card-tag" style="color: #555;">SÉRIE ANIMADA</span>
+                        <span class="card-title">X-MEN '97</span>
+                    </div>
