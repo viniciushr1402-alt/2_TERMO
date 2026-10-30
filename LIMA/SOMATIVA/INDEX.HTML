@@ -1,80 +1,174 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Nostalgia Play</title>
-
+    <title>NOSTALGIA PLAY</title>
 </head>
 <body>
-
-
     <header>
-        <div class="logo">NOSTALGIA <span>PLAY</span></div>
+        <section class="title">
+            <h2 class="nostalgia">NOSTALGIA</h2>
+            <h2 class="play"">PLAY</h2>
+        </section>
+        
         <nav>
-            <a href="#" class="active">INÍCIO</a>
-            <a href="#">CLÁSSICOS</a>
-            <a href="#">SÉRIES</a>
-            <a href="#">MAIS</a>
+            <ul class="menu">
+                <li><a href="#inicio">INÍCIO</a>
+                <li><a href="#classicos">CLÁSSICOS</a>
+                <li><a href="#herois">HERÓIS</a>
+                <li><a href="#hoje">HOJE</a>
+                <li><a class="link-sobre" href="#sobre">SOBRE</a>
+            </ul>
         </nav>
     </header>
 
-    <section class="hero-container">
-        <div class="hero-text">
-            <span class="section-tag">Anos 80, 90 e 2000</span>
-            <h1>HISTÓRIAS QUE ATRAVESSARAM GERAÇÕES.</h1>
-            <p>Uma viagem pelos 23 anos de animações marcantes que moldaram a infância de gerações inteiras de fãs dedicados.</p>
-            <a href="#" class="btn">EXPLORAR AGORA</a>
-        </div>
-        <div class="hero-visual">
-            <div class="circle-big"></div>
-        </div>
+    <main>
+        <section id="inicio" class="inicio">
+            <h4>80 • 90 • 2000</h4>
+            <h1>Desde os fliperamas barulhentos até as realidades virtuais, sempre fomos buscadores de mundos.</h1>
+
+            
+            <p>Uma viagem pelos jogos desde os atuais e persomagens novos aos mais iconicos.</p>
+            <a href="classicos"><button>APERTAR O PLAY</button></a>
+            
+            <figure>
+            <IMG src="https://i.redd.it/kuuycjxch8h11.png"></IMG>
+            </figure>
+        </section>
+
+
+    <section id="classicos" class="classicos">
+        <h4>DURANTE OS ANOS</h4>
+        <h2>CLÁSSICOS OU NÃO QUE CHEGARAM PARA FICAR!</h2>
+        <p>Duas produções que moldaram os generos de jogos inseridos e permaneceram vivas na memória de quem cresceu cercado por Jogos.</p>
+        <article class="cards">
+            <ul>
+                <li>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmrulOG3K3CL2Syn6jC90ESck-3HBpay_-oZqRasWAqg&s=10" alt="">
+                    <p>2025</p>
+                    <h3>Hollow Knigth: Silksong</h3>
+                </li>
+                
+                <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFbi57YOEHvAIMtGrrG0uBlfJnyl8lEEjItuZyzKGukg&s=10" alt="">
+                <p>2001</p>
+                <h3>Sillent Hill 2 </h3>
+                </li>
+            
+           
+                
+            </ul>
+        </article>
     </section>
 
-   
-    <section>
-        <span class="section-tag">Antes que seja tarde</span>
-        <h2 class="section-title">CLÁSSICOS QUE CHEGARAM PARA FICAR</h2>
-        <div class="grid-2">
-            <div class="card">
-                <div class="badge-dot bg-blue"></div>
-                <div class="card-tag">ANIME</div>
-                <div class="card-title">CAVALEIROS DO ZODÍACO</div>
-            </div>
-            <div class="card">
-                <div class="badge-dot bg-yellow"></div>
-                <div class="card-tag">ANIMAÇÃO</div>
-                <div class="card-title">CAVERNA DO DRAGÃO</div>
-            </div>
-        </div>
+    <section id="herois" class="herois">
+        <article class="container">
+            <h4>FAIXA ESPECIAL</h4>
+            <h2>FIGURAS QUE DOMINARAM AS TELAS DE VIDEOGAMES</h2>
+        </article>
+        
+        <article class="cards"">
+            <ul>
+                <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqq9u4zz2_8JHnqMpgrAWy3YwoMZDIt54ThdBMd4pCRQnUf1obIWBtz6Td&s=10" alt="">
+                    <p>RESIDENT EVIL 2</p>
+                    <h3>LEON KENEDY</h3>
+                </li>
+                <li>
+                    <img src="https://www.pixelstalk.net/wp-content/uploads/2025/09/God-Of-War-Ragnarok-fierce-warrior-close-up.jpg" alt="">
+                    <p>GOD OF WAR</p>
+                    <h3>KRATOS DE SPARTA</h3>
+                </li>
+                <li>
+                    <img src="https://wallpapercat.com/w/full/7/7/6/896911-2160x3840-mobile-4k-tomb-raider-game-wallpaper-photo.jpg" alt="">
+                    <p>TOMB RAIDER</p>
+                    <h3>LARA CROFT</h3>
+                </li>
+            </ul>
+        </article>
     </section>
 
- 
-    <section>
-        <span class="section-tag">Trilha Especial</span>
-        <h2 class="section-title">HERÓIS QUE DOMINARAM A TV</h2>
-        <div class="grid-3">
-            <div class="card">
-                <div class="badge-dot bg-pink"></div>
-                <div class="card-tag">METAL HERO</div>
-                <div class="card-title">JASPION</div>
-            </div>
-            <div class="card">
-                <div class="badge-dot bg-blue"></div>
-                <div class="card-tag">MEGA HERO</div>
-                <div class="card-title">JIRAIYA</div>
-            </div>
-            <div class="card">
-                <div class="badge-dot bg-yellow"></div>
-                <div class="card-tag">TOKUSATSU</div>
-                <div class="card-title">KAMEN RIDER BLACK</div>
-            </div>
-        </div>
+    <section id="hoje" class="hoje">
+        <h4>O PASSADO CONTINUA PRESENTE EM NOVAS PRODUÇÕES</h4>
+        <h2 class="tituloHoje">NOVAS PRODUÇÕES, VELHAS EMOÇÕES</h2>
+        <ul>
+            <li class="liFundoAmarelo">
+                <img src="https://pbs.twimg.com/media/GnXUXWCXMAArgzQ?format=webp&name=large" alt="">
+                <h3><strong></strong></h3>
+            </li>
+
+            <li>
+                <h2 class="numero">01</h2>
+                <h4>RPG</h4>
+                <h3><strong>Na história, uma entidade conhecida como a Pintora (The Paintress) desperta uma vez por ano para pintar um número em um monólito. Todos os indivíduos com aquela idade instantaneamente viram fumaça e são apagados da existência, um evento trágico chamado de Gommage. O número atual é 33, significando que o grupo de protagonistas tem apenas um ano restante de vida. É nesse cenário de contagem regressiva que a Expedição 33 parte em uma jornada desesperada e poética para destruir a Pintora e quebrar esse ciclo de morte antes que o tempo deles acabe de vez.</strong></h3>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <h2 class="numero">02</h2>
+                <h4>NARRATIVA</h4>
+                <h3><strong>Detroit: Become Human é um thriller de ficção científica interativo focado no dilema do livre-arbítrio e na senciência artificial. Ambientado em 2038, o jogo acompanha três androides que quebram suas programações originais ao desenvolverem emoções e consciência próprias.
+Com uma narrativa moldada inteiramente pelas escolhas do jogador, cada decisão pode alterar drasticamente o enredo ou levar à morte definitiva dos protagonistas. É uma obra cinematográfica profunda que questiona os limites da tecnologia e o que realmente significa ser humano.</strong></h3>
+            </li>
+
+            <li class="liFundoAmarelo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMvhIJ_mi1Aq0wwDp_JODeI7spkfGi14oMGgRJlcuWoZo1H_T4MFUr4wab&s=10" alt="">
+                <h3><strong>DETROID BECOME HUMAN</strong></h3>
+            </li>
+        </ul>
+
+        <ul>
+            <li class="liFundoAzul">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxxcNFF3MWxOPxKukB_xFTNmhK2UbJsW2LWVR70D5r35WiRgThm2Gv_QvT&s=10" alt="">
+                <h3><strong>OUTLAST 2</strong></h3>
+            </li>
+
+            <li>
+                <h2 class="numero">03</h2>
+                <h4>TERROR</h4>
+                <h3><strong>Outlast 2 é um visceral jogo de terror psicológico e survival horror em primeira pessoa que leva o medo e a tensão aos limites absolutos. Desenvolvido pela Red Barrels, o game coloca o jogador na pele de Blake Langermann, um jornalista e cinegrafista que, após um acidente de helicóptero, precisa resgatar sua esposa em uma região isolada no deserto do Arizona.
+Sem armas para se defender, a única ferramenta de sobrevivência é uma câmera de vídeo com visão noturna, forçando o jogador a fugir e se esconder de uma seita religiosa extremista e violenta que domina o local. Explorando fanatismo, loucura e traumas do passado, o título entrega uma atmosfera opressiva, perturbadora e repleta de adrenalina</strong></h3>
+            </li>
+        </ul>
+
     </section>
 
+    <section id="sobre" class="sobre">
+        <article>
+             <h4>FIM DA GAME?</h4>
+        <h1><strong>NUNCA.</strong></h1>
+        <p>Algumas histórias envelhecem, mas sempre continuam presentes nos dias de hoje</p>
+        </article>
+       
+    </section>    
+</main>
 
-    <section>
-        <span class="section-tag">O Passado Deixou Legado</span>
-        <h2 class="section-title">NOVAS PRODUÇÕES,<br>VELHAS EMOÇÕES</h2>
-    
+    <footer>
+        <h4 class="nostalgia">NOSTALGIA</h4>
+        <h4 class="play">PLAY</h4>
+        <section>
+            <p>"Memória boa é aquela que anda dá vontade de apertar o play"</p>
+            <p>Desenvolvido por Vinicius Henrique</p>
+        </section>
+       
+        <section class="redes">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="">LinkedIn</a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </section>
+    </footer>
+
+</body>
+</html>
