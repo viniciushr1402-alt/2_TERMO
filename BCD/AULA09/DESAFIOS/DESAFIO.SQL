@@ -101,3 +101,164 @@ SELECT * FROM pedido WHERE id_pedido = @pedido_com_erro;
 -- a) pedido; b) 3 itens; c) baixa de estoque;
 -- d) SAVEPOINT; e) pagamento; f) status FINALIZADO;
 -- g) consultas; h) COMMIT.
+
+CREATE VIEW vw_produtos_ativos AS
+SELECT id_produto, nome, preco
+FROM produto
+WHERE ativo = TRUE;
+
+SELECT *
+FROM vw_produtos_ativos
+WHERE preco > 10.00;
+
+SHOW FULL TABLES
+WHERE Table_type = 'VIEW';
+
+SELECT TABLE_NAME
+FROM information_schema.VIEWS
+WHERE TABLE_SCHEMA = DATABASE();
+
+
+
+SHOW CREATE VIEW vw_produtos_ativos;
+
+CREATE VIEW vw_produtos_categorias AS
+SELECT
+    p.id_produto,
+    p.nome AS produto,
+    c.nome AS categoria,
+    p.preco
+FROM produto AS p
+
+
+**6. Crie `vw_pedidos_clientes`.**
+```sql
+CREATE VIEW vw_pedidos_clientes AS
+SELECT
+    p.id_pedido,
+    p.data_pedido,
+    c.id_cliente,
+    c.nome AS cliente,
+    p.status_pedido
+FROM pedido AS p
+INNER JOIN cliente AS c
+    ON c.id_cliente = p.id_cliente;
+```[cite: 6, 18]
+
+**7. Consulte somente pedidos FINALIZADOS pela view.**
+```sql
+SELECT *
+FROM vw_pedidos_clientes
+WHERE status_pedido = 'FINALIZADO';
+```[cite: 6]
+
+**8. Crie uma view com pedido, produto, quantidade, preço unitário e subtotal.**
+```sql
+CREATE VIEW vw_itens_pedidos AS
+SELECT
+    pe.id_pedido,
+    pe.data_pedido,
+    c.nome AS cliente,
+    pr.nome AS produto,
+    ip.quantidade,
+    ip.preco_unitario,
+    (ip.quantidade * ip.preco_unitario) AS subtotal
+FROM pedido AS pe
+INNER JOIN cliente AS c
+    ON c.id_cliente = pe.id_cliente
+INNER JOIN item_pedido AS ip
+    ON ip.id_pedido = pe.id_pedido
+INNER JOIN produto AS pr
+    ON pr.id_produto = ip.id_produto;
+```[cite: 7]
+
+---
+
+### **Parte C: Relatórios (Intermediário / Avançado)**
+
+**9. Crie `vw_vendas_por_produto` com `SUM` e `GROUP BY`.**
+```sql
+CREATE VIEW vw_vendas_por_produto AS
+SELECT
+    pr.id_produto,
+    pr.nome AS produto,
+    SUM(ip.quantidade) AS unidades_vendidas,
+    SUM(ip.quantidade * ip.preco_unitario) AS faturamento
+FROM produto AS pr
+INNER JOIN item_pedido AS ip
+    ON ip.id_produto = pr.id_produto
+INNER JOIN pedido AS pe
+    ON pe.id_pedido = ip.id_pedido
+WHERE pe.status_pedido = 'FINALIZADO'
+GROUP BY pr.id_produto, pr.nome;
+```[cite: 8]
+
+**10. Liste os produtos pelo maior faturamento.**
+```sql
+SELECT *
+FROM vw_vendas_por_produto
+ORDER BY faturamento DESC;
+```[cite: 8]
+
+**11. Crie uma view que apresente todos os clientes e a quantidade de pedidos, inclusive zero.**
+```sql
+CREATE VIEW vw_clientes_resumo AS
+SELECT
+    c.id_cliente,
+    c.nome AS cliente,
+    COUNT(p.id_pedido) AS quantidade_pedidos
+FROM cliente AS c
+LEFT JOIN pedido AS p
+    ON p.id_cliente = c.id_cliente
+GROUP BY c.id_cliente, c.nome;
+```[cite: 8, 9]
+
+**12. Descubra, pela view anterior, clientes que nunca compraram.**
+```sql
+SELECT *
+FROM vw_clientes_resumo
+WHERE quantidade_pedidos = 0;
+```[cite: 9]
+
+---
+
+### **Parte D: Manutenção**
+
+**13. Use `CREATE OR REPLACE` para acrescentar `id_categoria` em uma view.**
+```sql
+CREATE OR REPLACE VIEW vw_produtos_ativos AS
+SELECT
+    id_produto,
+    nome,
+    preco,
+    id_categoria
+FROM produto
+WHERE ativo = TRUE;
+```[cite: 10]
+
+**14. Crie uma view simples e teste uma atualização permitida pelo SGBD.**
+```sql
+-- Criação da view simples
+CREATE VIEW vw_clientes_ativos AS
+SELECT id_cliente, nome, email, ativo
+FROM cliente
+WHERE ativo = TRUE;
+
+-- Teste de UPDATE (permitido por ser uma view sem agregações complexas)
+UPDATE vw_clientes_ativos
+SET nome = 'Ana Lima Silva'
+WHERE id_cliente = 1;
+```[cite: 12]
+
+**15. Crie uma view de produtos ativos com `WITH CHECK OPTION` e analise seu efeito.**
+```sql
+CREATE OR REPLACE VIEW vw_produtos_ativos AS
+SELECT
+    id_produto,
+    nome,
+    preco,
+    ativo,
+    id_categoria
+FROM produto
+WHERE ativo = TRUE
+WITH CHECK OPTION;
