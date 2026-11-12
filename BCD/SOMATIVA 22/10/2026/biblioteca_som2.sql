@@ -241,7 +241,7 @@ WHERE id_emprestimo = 1
   AND status_emprestimo = 'ABERTO';
 
 COMMIT;
-
+UPDATE locacao 
 
 -- 25. Análise técnica
 -- A
