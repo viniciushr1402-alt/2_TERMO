@@ -1,7 +1,7 @@
 -- Active: 1788435082238@@127.0.0.1@3306@retrogame_recuperacao
 
 
--- FASE 1 - DDL: ESTRUTURA E RESTRIÇÕES (25 pontos)
+-- FASE 1 - DDL: ESTRUTURA E RESTRIÇÕES 
 
 -- 1. CRIAR E SELECIONAR BANCO DE DADOS
 CREATE DATABASE IF NOT EXISTS retrogame_recuperacao;
@@ -76,7 +76,7 @@ CREATE TABLE LOCACAO (
 -- 6. ALTER TABLE
 ALTER TABLE JOGO ADD COLUMN DESENVOLVEDORA VARCHAR(100) NULL;
 
--- FASE 2 - DML: MANIPULAÇÃO DE DADOS (25 pontos)
+-- FASE 2 - DML: MANIPULAÇÃO DE DADOS 
 
 -- 7. INSERIR CLIENTE
 INSERT INTO CLIENTE (nome, email, telefone) VALUES 
@@ -130,7 +130,7 @@ UPDATE JOGO SET quantidade_disponivel = quantidade_disponivel + 2 WHERE ano_lanc
 SELECT titulo, autor, quantidade_disponivel 
 FROM LIVRO;
 
--- FASE 3 - DQL: CONSULTAS E ANÁLISE (30 pontos)
+-- FASE 3 - DQL: CONSULTAS E ANÁLISE 
 
 -- 13. SELECT BASICO
 SELECT titulo, ano_lancamento, quantidade_disponivel FROM JOGO;
@@ -180,7 +180,7 @@ FROM CLIENTE c
 LEFT JOIN LOCACAO l ON c.id_cliente = l.id_cliente
 GROUP BY c.id_cliente, c.nome;
 
--- FASE 4 - TCL: TRANSAÇÕES E INTEGRIDADE (20 pontos)
+-- FASE 4 - TCL: TRANSAÇÕES E INTEGRIDADE 
 
 -- 22. TRANSACAO DE LOCACAO
 START TRANSACTION;
@@ -213,3 +213,14 @@ UPDATE LOCACAO SET status_locacao = 'DEVOLVIDA', data_devolucao = CURRENT_DATE()
 UPDATE JOGO SET quantidade_disponivel = quantidade_disponivel + 1 WHERE id_jogo = (SELECT id_jogo FROM LOCACAO WHERE id_locacao = 1);
 COMMIT;
 
+-- 8. ANALISE TECNICA 
+
+-- A= Ele foi evitado pela condição unique.  
+-- B=  Tambem foi evitado pela condição unique.
+-- C= Foi evitado pela condição Check.
+-- D= Foi evitado pela chave estrangeira.
+-- E= Foi evitado pela regra de comportamento.
+-- F= Foi garantido pelo controle transicional.     
+-- G= Foi previnido pela validação de estoque > 0 junto com o CHECK.
+
+-- Diferenciação: Restrições do banco garantem integridade estrutural  transações garantem a consistência  e validações de aplicação tratam regras de negócio.
