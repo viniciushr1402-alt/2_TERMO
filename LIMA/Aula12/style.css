@@ -249,3 +249,282 @@ img.borda-ghost {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+
+
+/* =========================================================
+   PLANEJAMENTO DO SITE - TECHFEST 2026
+   ---------------------------------------------------------
+   Paleta de cores:
+   - Primária (Topo/Rodapé): #242f44 (Azul Marinho Escuro)
+   - Secundária (Banner):    #badbe6 (Azul Claro Pastel)
+   - Fundo da página:        #eef2f6 (Cinza Gelo)
+   - Superfície (Cards):     #ffffff (Branco)
+   - Texto principal:        #1e293b (Ardósia Escuro)
+
+   Famílias tipográficas:
+   - Títulos: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+   - Corpo:   Arial, Helvetica, sans-serif
+
+   Mapa de seções:
+   1. Cabeçalho e menu interno (header / nav)
+   2. Banner de destaque (#inicio)
+   3. Grade 3x2 de 6 atrações (#atracoes)
+   4. Programação e Sobre lado a lado (#programacao / #sobre)
+   5. Rodapé com contato e créditos (#contato)
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eef2f6;
+  color: #1e293b;
+  max-width: 1120px;
+  margin: 16px auto;
+  padding: 12px;
+  border: 2px solid #242f44;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 1. Cabeçalho e Navegação */
+header {
+  background-color: #242f44;
+  color: #e2e8f0;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav li + li::before {
+  content: "|";
+  color: #94a3b8;
+  margin: 0 10px;
+}
+
+nav a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+nav a:hover {
+  color: #badbe6;
+  text-decoration: underline;
+}
+
+/* Conteúdo Principal */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 2. Banner Principal */
+.banner {
+  background-color: #badbe6;
+  color: #1e293b;
+  text-align: center;
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.banner h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.slogan {
+  font-size: 0.95rem;
+  max-width: 58ch;
+}
+
+.banner-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.banner-acoes img {
+  width: 64px;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid #242f44;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #242f44;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #334155;
+}
+
+/* 3. Grade 3x2 de Atrações */
+.atracoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  padding: 18px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.card img {
+  width: 56px;
+  height: 32px;
+  border-radius: 3px;
+}
+
+.card h3 {
+  font-size: 0.98rem;
+  color: #1e293b;
+}
+
+.categoria {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #242f44;
+  background-color: #badbe6;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+/* 4. Programação e Sobre (2 Colunas) */
+.dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.painel {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.painel h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.painel ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.painel p {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.5;
+  max-width: 46ch;
+  margin: 0 auto;
+}
+
+/* 5. Rodapé */
+footer {
+  background-color: #242f44;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 16px 20px;
+  font-size: 0.88rem;
+}
+
+/* Responsividade */
+@media (max-width: 820px) {
+  body {
+    margin: 8px;
+  }
+
+  .atracoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dupla {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .atracoes {
+    grid-template-columns: 1fr;
+  }
+}
