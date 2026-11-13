@@ -223,4 +223,4 @@ COMMIT;
 -- F= Foi garantido pelo controle transicional.     
 -- G= Foi previnido pela validação de estoque > 0 junto com o CHECK.
 
--- Diferenciação: Restrições do banco garantem integridade estrutural  transações garantem a consistência  e validações de aplicação tratam regras de negócio.
+-- Diferenciação: Restrições do banco garantem integridade estrutural  transações garantem a consistência, e validações de aplicação tratam regras de negócio.
