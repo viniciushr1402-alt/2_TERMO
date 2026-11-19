@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almoxarifado 360° | Gestão Industrial, Confiabilidade &amp; Soluções</title>
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM CORPORATIVO — PADRÃO ZUCCHETTI BRASIL (100% HTML5 + CSS3)
+       ========================================================================== */
+    :root {
+      --navy-950: #001526;
+      --navy-900: #001f36;
+      --navy-800: #002b49;
+      --navy-700: #083d63;
+      --orange-500: #f37021;
+      --orange-600: #d95b10;
+      --orange-100: #fff1e8;
+      --blue-600: #0066b8;
+      --blue-100: #e6f2fc;
+      --bg-page: #f4f7fa;
+      --bg-white: #ffffff;
+      --text-dark: #0f2537;
+      --text-body: #425466;
+      --text-muted: #697a8c;
+      --border-light: #e2e8f0;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      --shadow-sm: 0 2px 10px rgba(0, 43, 73, 0.05);
+      --shadow-md: 0 10px 30px rgba(0, 43, 73, 0.08);
+      --shadow-lg: 0 20px 45px rgba(0, 31, 54, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==========================================================================
+       1. BARRA SUPERIOR & NAVEGAÇÃO FIXA RESPONSIVA (CSS PURO)
+       ========================================================================== */
+    .top-strip {
+      background: var(--navy-950);
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      padding: 0.45rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .top-strip-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    header.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--navy-800);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(243, 112, 33, 0.3);
+    }
+
+    .logo span em {
+      font-style: normal;
+      color: var(--orange-500);
+    }
+
+    #nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      cursor: pointer;
+      font-size: 1.45rem;
+      color: var(--navy-800);
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+    }
+
+    .nav-menu a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-body);
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--orange-500);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* ==========================================================================
+       BOTÕES CORPORATIVOS (ESTILO PILL)
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.45rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      text-align: center;
+    }
+
+    .btn-orange {
+      background: var(--orange-500);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(243, 112, 33, 0.28);
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-600);
+      transform: translateY(-1px);
+    }
+
+    .btn-navy {
+      background: var(--navy-800);
+      color: #fff;
+    }
+
+    .btn-navy:hover {
+      background: var(--navy-700);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #fff;
+    }
+
+    .btn-outline-navy {
+      background: #fff;
+      color: var(--navy-800);
+      border-color: var(--border-light);
+    }
+
+    .btn-outline-navy:hover {
+      border-color: var(--navy-800);
+    }
+
+    .btn-sm {
+      padding: 0.42rem 0.95rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION (PROPOSTA DE VALOR & CONFIABILIDADE)
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(125deg, var(--navy-900) 0%, var(--navy-800) 58%, var(--navy-700) 100%);
+      color: #fff;
+      padding: 4.5rem 1.5rem 5.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 112, 33, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(243, 112, 33, 0.18);
+      color: #ffb07c;
+      border: 1px solid rgba(243, 112, 33, 0.4);
+      padding: 0.35rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.55rem;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--orange-500);
+    }
+
+    .hero p {
+      font-size: 1.06rem;
+      color: #d6e4f0;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .hero-trust-strip {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .hero-trust-strip strong {
+      color: #fff;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-card-header h3 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .pill-live {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.22rem 0.65rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .hero-metric-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .hero-metric-item {
+      background: rgba(0, 20, 36, 0.45);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-metric-item small {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.78rem;
+    }
+
+    .hero-metric-item strong {
+      font-size: 1.02rem;
+      color: #fff;
+    }
+
+    .metric-tag {
+      background: var(--orange-500);
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+    }
+
+    /* ==========================================================================
+       CONTAINER & KPIS SOBREPOSTOS
+       ========================================================================== */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .kpi-wrapper {
+      margin-top: -2.85rem;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 3.5rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      padding: 1.45rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      border-top: 4px solid var(--navy-800);
+      transition: transform 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .kpi-card.accent {
+      border-top-color: var(--orange-500);
+    }
+
+    .kpi-card.alert {
+      border-top-color: var(--danger);
+    }
+
+    .kpi-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+
+    .kpi-number {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--navy-800);
+      margin: 0.35rem 0 0.25rem;
+    }
+
+    .kpi-foot {
+      font-size: 0.82rem;
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .kpi-foot.warn {
+      color: var(--danger);
+    }
+
+    /* ==========================================================================
+       ESTRUTURA PADRÃO DAS SEÇÕES
+       ========================================================================== */
+    section.section-block {
+      margin-bottom: 3.75rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--orange-500);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-head h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy-800);
+      letter-spacing: -0.01em;
+    }
+
+    .section-head p {
+      color: var(--text-body);
+      font-size: 0.96rem;
+      max-width: 700px;
+      margin-top: 0.25rem;
+    }
+
+    .surface-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ==========================================================================
+       3. QUEM SOMOS NÓS (INSTITUCIONAL + EQUIPE)
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.35rem;
+    }
+
+    .about-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+
+    .about-box strong {
+      display: block;
+      color: var(--navy-800);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-box span {
+      font-size: 0.84rem;
+      color: var(--text-body);
+    }
+
+    .team-card-panel {
+      background: linear-gradient(145deg, var(--navy-900), var(--navy-800));
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+
+    .team-card-panel h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .team-card-panel > p {
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
+    }
+
+    .team-member {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0.9rem;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.6rem;
+      font-size: 0.86rem;
+    }
+
+    .team-member:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-role {
+      color: #ffb07c;
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    /* ==========================================================================
+       4. NOSSOS SERVIÇOS (6 CARDS CORPORATIVOS)
+       ========================================================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.6rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--orange-500);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--orange-100);
+      color: var(--orange-500);
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: var(--navy-800);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      margin-bottom: 1.15rem;
+    }
+
+    .service-link {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--orange-500);
+    }
+
+    /* ==========================================================================
+       5. PILARES DE CONFIABILIDADE
+       ========================================================================== */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pillar-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.45rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-num {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--blue-600);
+      background: var(--blue-100);
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-800);
+      margin-bottom: 0.4rem;
+    }
+
+    .pillar-card p {
+      font-size: 0.86rem;
+      color: var(--text-body);
+    }
+
+    /* ==========================================================================
+       6. SISTEMA OPERACIONAL DO ALMOXARIFADO (ABAS EM CSS PURO)
+       ========================================================================== */
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy-800);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.66rem 0.9rem;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--orange-500);
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.14);
+    }
+
+    .tabs-container input[type="radio"] {
+      display: none;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 0.45rem;
+      border-bottom: 2px solid var(--border-light);
+      margin: 1.75rem 0 1.35rem;
+      flex-wrap: wrap;
+    }
+
+    .tabs-nav label {
+      padding: 0.7rem 1.15rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+
+    .tabs-nav label:hover {
+      color: var(--navy-800);
+    }
+
+    #tab-estoque:checked ~ .tabs-nav label[for="tab-estoque"],
+    #tab-materiais:checked ~ .tabs-nav label[for="tab-materiais"],
+    #tab-fornecedores:checked ~ .tabs-nav label[for="tab-fornecedores"],
+    #tab-setores:checked ~ .tabs-nav label[for="tab-setores"],
+    #tab-historico:checked ~ .tabs-nav label[for="tab-historico"] {
+      color: var(--orange-500);
+      border-bottom-color: var(--orange-500);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    #tab-estoque:checked ~ .tabs-content #panel-estoque,
+    #tab-materiais:checked ~ .tabs-content #panel-materiais,
+    #tab-fornecedores:checked ~ .tabs-content #panel-fornecedores,
+    #tab-setores:checked ~ .tabs-content #panel-setores,
+    #tab-historico:checked ~ .tabs-content #panel-historico {
+      display: block;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: #f8fafc;
+      color: var(--navy-800);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1.5px solid var(--border-light);
+    }
+
+    td {
+      padding: 0.88rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-dark);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: #fafcff;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.24rem 0.68rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .badge-success { background: var(--success-bg); color: var(--success); }
+    .badge-danger { background: var(--danger-bg); color: var(--danger); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning); }
+    .badge-navy { background: #e2e8f0; color: var(--navy-800); }
+
+    /* ==========================================================================
+       7. PLANOS E PREÇOS (VALORES ACESSÍVEIS E COMPETITIVOS)
+       ========================================================================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: var(--bg-white);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: var(--orange-500);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+
+    .popular-ribbon {
+      position: absolute;
+      top: -13px;
+      right: 24px;
+      background: var(--orange-500);
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.28rem 0.85rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .price-card h3 {
+      font-size: 1.2rem;
+      color: var(--navy-800);
+      margin-bottom: 0.35rem;
+    }
+
+    .price-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .price-value {
+      font-size: 2.15rem;
+      font-weight: 800;
+      color: var(--navy-800);
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .price-value small {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .price-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.88rem;
+      color: var(--text-body);
+    }
+
+    .price-features li strong {
+      color: var(--success);
+      margin-right: 6px;
+    }
+
+    /* ==========================================================================
+       8. SOLICITAÇÃO DE SERVIÇOS & MEIOS DE CONTATO (DUAS COLUNAS)
+       ========================================================================== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.75rem;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--navy-800);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-size: 0.96rem;
+      color: var(--navy-800);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item p {
+      font-size: 0.86rem;
+      color: var(--text-body);
+    }
+
+    /* ==========================================================================
+       9. FEEDBACK DOS CLIENTES & PERGUNTAS FREQUENTES (FAQ)
+       ========================================================================== */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.75rem;
+    }
+
+    .review-item {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      background: #fafcff;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.45rem;
+      gap: 0.5rem;
+    }
+
+    .stars {
+      color: var(--orange-500);
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    details.faq-item {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.75rem;
+      background: #fff;
+    }
+
+    details.faq-item[open] {
+      border-color: var(--orange-500);
+    }
+
+    details.faq-item summary {
+      font-weight: 700;
+      color: var(--navy-800);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--orange-500);
+      font-weight: 800;
+    }
+
+    details.faq-item[open] summary::after {
+      content: "−";
+    }
+
+    details.faq-item p {
+      margin-top: 0.7rem;
+      font-size: 0.88rem;
+      color: var(--text-body);
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* ==========================================================================
+       10. RODAPÉ CORPORATIVO
+       ========================================================================== */
+    footer {
+      background: var(--navy-950);
+      color: #cbd5e1;
+      padding: 3.25rem 1.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-inner h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-inner p,
+    .footer-inner li {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 0.42rem;
+    }
+
+    .footer-inner a:hover {
+      color: var(--orange-500);
+    }
+
+    .footer-bottom {
+      max-width: 1240px;
+      margin: 1.35rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       RESPONSIVIDADE (TABLETS E SMARTPHONES)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-inner,
+      .about-grid,
+      .contact-layout,
+      .two-col-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-grid,
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid,
+      .pricing-grid,
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle-label {
+        display: block;
+      }
+
+      .nav-menu,
+      .nav-cta {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 0.75rem;
+      }
+
+      #nav-toggle:checked ~ .nav-menu,
+      #nav-toggle:checked ~ .nav-cta {
+        display: flex;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .kpi-grid,
+      .pillars-grid,
+      .services-grid,
+      .pricing-grid,
+      .about-highlights,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR INSTITUCIONAL -->
+  <div class="top-strip">
+    <div class="top-strip-inner">
+      <div><span class="status-dot"></span>Plataforma Corporativa <strong>Almoxarifado 360°</strong> • Banco Normalizado 3FN</div>
+      <div>Atendimento Comercial: (19) 3441-3600 • Limeira - SP</div>
+    </div>
+  </div>
+
+  <!-- NAVEGAÇÃO PRINCIPAL -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">360°</span>
+        <span>Almoxarifado<em>360</em></span>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir Menu">&#9776;</label>
+
+      <nav class="nav-menu">
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#confiabilidade">Confiabilidade</a>
+        <a href="#sistema">Painel Estoque</a>
+        <a href="#precos">Preços</a>
+        <a href="#feedback-faq">Feedback &amp; FAQ</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="#solicitar" class="btn btn-orange btn-sm">Solicitar Serviço</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO CORPORATIVO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-eyebrow">Tecnologia Industrial &amp; Governança de Dados</span>
+        <h1>Transforme o seu almoxarifado com <span>precisão, rastreabilidade</span> e zero perdas.</h1>
+        <p>
+          Solução completa para controle de suprimentos industriais, homologação de fornecedores, requisições por setor e auditoria em tempo real sobre arquitetura relacional de alta confiabilidade.
+        </p>
+        <div class="hero-actions">
+          <a href="#solicitar" class="btn btn-orange">Solicitar Implantação</a>
+          <a href="#sistema" class="btn btn-outline-light">Explorar Painel ao Vivo</a>
+        </div>
+        <div class="hero-trust-strip">
+          <span><strong>✔ SLA 99,8%</strong> de Disponibilidade</span>
+          <span><strong>✔ Zero Saldo Negativo</strong></span>
+          <span><strong>✔ Suporte Técnico Especializado</strong></span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Indicadores de Confiabilidade">
+        <div class="hero-card-header">
+          <h3>Selos de Confiabilidade Técnica</h3>
+          <span class="pill-live">● AUDITADO</span>
+        </div>
+        <div class="hero-metric-list">
+          <div class="hero-metric-item">
+            <div>
+              <small>Integridade de Dados &amp; Normalização</small>
+              <strong>3ª Forma Normal (3FN)</strong>
+            </div>
+            <span class="metric-tag">SQL</span>
+          </div>
+          <div class="hero-metric-item">
+            <div>
+              <small>Segurança em Baixas de Estoque</small>
+              <strong>Transações COMMIT / ROLLBACK</strong>
+            </div>
+            <span class="metric-tag">ACID</span>
+          </div>
+          <div class="hero-metric-item">
+            <div>
+              <small>Preservação de Histórico Fiscal</small>
+              <strong>Bloqueio ON DELETE RESTRICT</strong>
+            </div>
+            <span class="metric-tag">100%</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 2. KPIS DE CONFIABILIDADE E RESULTADOS -->
+  <div class="container kpi-wrapper">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title">Acuracidade de Inventário</div>
+        <div class="kpi-number">99,8%</div>
+        <div class="kpi-foot">Fim das divergências físicas</div>
+      </div>
+      <div class="kpi-card accent">
+        <div class="kpi-title">Patrimônio Controlado</div>
+        <div class="kpi-number">R$ 32.027,50</div>
+        <div class="kpi-foot">1.607 itens ativos rastreados</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Redução de Retrabalho</div>
+        <div class="kpi-number">-78%</div>
+        <div class="kpi-foot">Eliminação de planilhas manuais</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Avaliação dos Clientes</div>
+        <div class="kpi-number">4,9 / 5 ★</div>
+        <div class="kpi-foot">Satisfação comprovada na indústria</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- 3. QUEM SOMOS NÓS -->
+    <section class="section-block" id="quem-somos">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Institucional</span>
+          <h2>Quem Somos Nós</h2>
+          <p>Especialistas em organização de dados industriais e sistemas de controle operacional para almoxarifados.</p>
+        </div>
+      </div>
+
+      <div class="surface-card about-grid">
+        <div>
+          <h3 style="font-size:1.25rem; color:var(--navy-800); margin-bottom:0.75rem;">
+            Engenharia de dados aplicada à rotina real da fábrica
+          </h3>
+          <p style="color:var(--text-body); margin-bottom:0.9rem;">
+            O <strong>Almoxarifado 360°</strong> nasceu no ambiente industrial do <strong>SENAI "Luiz Varga" (Limeira - SP)</strong> com o propósito de eliminar os gargalos causados por controles manuais, planilhas duplicadas e falta de rastreabilidade entre compras e linhas de produção.
+          </p>
+          <p style="color:var(--text-body);">
+            Nossa arquitetura conecta ponta a ponta materiais, prateleiras, fornecedores homologados e setores produtivos, garantindo decisões rápidas baseadas em dados íntegros.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-box">
+              <strong>Missão</strong>
+              <span>Garantir acuracidade total de estoque e agilidade no abastecimento industrial.</span>
+            </div>
+            <div class="about-box">
+              <strong>Visão</strong>
+              <span>Ser referência em governança de suprimentos e rastreabilidade operacional.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card-panel">
+          <h3>Nossa Equipe Especialista</h3>
+          <p>Time multidisciplinar responsável pela arquitetura, modelagem, código e qualidade:</p>
+          <div class="team-member">
+            <span><strong>Vinicius Henrique</strong></span>
+            <span class="team-role">Front-end HTML5 &amp; CSS3</span>
+          </div>
+          <div class="team-member">
+            <span><strong>Rebeca</strong></span>
+            <span class="team-role">Modelagem DER (brModelo) &amp; UI</span>
+          </div>
+          <div class="team-member">
+            <span><strong>Duda</strong></span>
+            <span class="team-role">Arquitetura MySQL &amp; Documentação</span>
+          </div>
+          <div class="team-member">
+            <span><strong>Samira</strong></span>
+            <span class="team-role">Dicionário de Dados &amp; Qualidade (QA)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. NOSSOS SERVIÇOS -->
+    <section class="section-block" id="servicos">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Portfólio de Soluções</span>
+          <h2>Nossos Serviços</h2>
+          <p>Soluções completas para estruturar, automatizar e auditar o fluxo de materiais da sua empresa.</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <div class="service-badge">01</div>
+            <h3>Implantação &amp; Saneamento de Base</h3>
+            <p>Diagnóstico de planilhas antigas, eliminação de cadastros duplicados e estruturação do banco de dados na 3ª Forma Normal (3FN).</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-badge">02</div>
+            <h3>Controle de Entradas e Saídas</h3>
+            <p>Registro ágil de recebimentos por Nota Fiscal (fornecedor) e requisições internas por ordem de produção, com cálculo automático de saldo.</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-badge">03</div>
+            <h3>Gestão de Setores &amp; Centros de Custo</h3>
+            <p>Mapeamento de departamentos industriais com controle de status (Disponível/Indisponível) e identificação de responsável e ramal.</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-badge">04</div>
+            <h3>Homologação de Fornecedores</h3>
+            <p>Cadastro centralizado com validação de CNPJ único, histórico de entregas e bloqueio contra exclusão de parceiros com histórico fiscal.</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-badge">05</div>
+            <h3>Monitoramento de Estoque Mínimo</h3>
+            <p>Configuração de limites mínimo, máximo e previsão anual por prateleira, emitindo alertas visuais antes que ocorra ruptura na linha.</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-badge">06</div>
+            <h3>Auditoria &amp; Relatórios Gerenciais</h3>
+            <p>Consultas otimizadas com indexação por data para fechamento mensal, valoração financeira do estoque e trilha completa de auditoria.</p>
+          </div>
+          <a href="#solicitar" class="service-link">Solicitar este serviço →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. CONFIABILIDADE & SEGURANÇA OPERACIONAL -->
+    <section class="section-block" id="confiabilidade">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Garantia Técnica</span>
+          <h2>Por que as indústrias confiam no Almoxarifado 360°?</h2>
+          <p>Quatro camadas de proteção embutidas diretamente na estrutura de dados do sistema.</p>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-num">GARANTIA 01</span>
+          <h3>Bloqueio de Saldo Negativo</h3>
+          <p>Regras de integridade impedem qualquer retirada acima da quantidade física real disponível na prateleira.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">GARANTIA 02</span>
+          <h3>Transações Atômicas</h3>
+          <p>O histórico de movimentação e o saldo do estoque são gravados juntos. Em caso de falha, o sistema desfaz tudo automaticamente.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">GARANTIA 03</span>
+          <h3>Histórico Inviolável</h3>
+          <p>Materiais, setores e fornecedores com movimentações registradas não podem ser apagados acidentalmente.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">GARANTIA 04</span>
+          <h3>Alta Velocidade de Busca</h3>
+          <p>Relatórios mensais e filtros por período utilizam índices dedicados para respostas instantâneas mesmo com milhares de registros.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DEMONSTRAÇÃO DO SISTEMA OPERACIONAL (ABAS EM CSS PURO) -->
+    <section class="section-block" id="sistema">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Demonstração Prática</span>
+          <h2>Painel Operacional do Almoxarifado</h2>
+          <p>Navegue pelas abas abaixo para visualizar o controle de estoque, materiais, fornecedores, setores e movimentações.</p>
+        </div>
+      </div>
+
+      <div class="surface-card tabs-container">
+        <input type="radio" name="workspace-tabs" id="tab-estoque" checked />
+        <input type="radio" name="workspace-tabs" id="tab-materiais" />
+        <input type="radio" name="workspace-tabs" id="tab-fornecedores" />
+        <input type="radio" name="workspace-tabs" id="tab-setores" />
+        <input type="radio" name="workspace-tabs" id="tab-historico" />
+
+        <div class="tabs-nav" role="tablist">
+          <label for="tab-estoque">Posição de Estoque</label>
+          <label for="tab-materiais">Materiais</label>
+          <label for="tab-fornecedores">Fornecedores</label>
+          <label for="tab-setores">Setores</label>
+          <label for="tab-historico">Histórico de Movimentações</label>
+        </div>
+
+        <div class="tabs-content">
+          <!-- ABA 1: ESTOQUE -->
+          <div class="tab-panel" id="panel-estoque">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Material</th>
+                    <th>Prateleira</th>
+                    <th>Saldo Atual</th>
+                    <th>Mín / Máx</th>
+                    <th>Valor Unitário</th>
+                    <th>Total Imobilizado</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#01</td>
+                    <td><strong>Chapa de Aço 1020</strong></td>
+                    <td><span class="badge badge-navy">PRAT-A01</span></td>
+                    <td><strong>120 UN</strong></td>
+                    <td>50 / 300 UN</td>
+                    <td>R$ 185,50</td>
+                    <td><strong>R$ 22.260,00</strong></td>
+                    <td><span class="badge badge-success">NORMAL</span></td>
+                  </tr>
+                  <tr>
+                    <td>#02</td>
+                    <td><strong>Parafuso Sextavado M10</strong></td>
+                    <td><span class="badge badge-navy">PRAT-B03</span></td>
+                    <td><strong>1.200 UN</strong></td>
+                    <td>500 / 5.000 UN</td>
+                    <td>R$ 1,25</td>
+                    <td><strong>R$ 1.500,00</strong></td>
+                    <td><span class="badge badge-success">NORMAL</span></td>
+                  </tr>
+                  <tr>
+                    <td>#03</td>
+                    <td><strong>Óleo Hidráulico VG 68</strong></td>
+                    <td><span class="badge badge-navy">PRAT-C02</span></td>
+                    <td><strong style="color:var(--danger)">12 LT</strong></td>
+                    <td>15 / 100 LT</td>
+                    <td>R$ 340,00</td>
+                    <td><strong>R$ 4.080,00</strong></td>
+                    <td><span class="badge badge-danger">REPOR (≤ MÍN)</span></td>
+                  </tr>
+                  <tr>
+                    <td>#04</td>
+                    <td><strong>Disco de Corte 7 Pol</strong></td>
+                    <td><span class="badge badge-navy">PRAT-B07</span></td>
+                    <td><strong>275 UN</strong></td>
+                    <td>100 / 800 UN</td>
+                    <td>R$ 14,90</td>
+                    <td><strong>R$ 4.097,50</strong></td>
+                    <td><span class="badge badge-success">NORMAL</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ABA 2: MATERIAIS -->
+          <div class="tab-panel" id="panel-materiais">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição Técnica</th>
+                    <th>Valor Unitário</th>
+                    <th>Unidade</th>
+                    <th>Localização</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><strong>Chapa de Aço 1020</strong></td>
+                    <td>Chapa laminada a frio 2mm x 1000mm</td>
+                    <td>R$ 185,50</td>
+                    <td>UN</td>
+                    <td>Corredor A1</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><strong>Parafuso Sextavado M10</strong></td>
+                    <td>Aço inox 304 rosca métrica</td>
+                    <td>R$ 1,25</td>
+                    <td>UN</td>
+                    <td>Corredor B2</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><strong>Óleo Hidráulico VG 68</strong></td>
+                    <td>Bombona industrial 20 litros</td>
+                    <td>R$ 340,00</td>
+                    <td>LT</td>
+                    <td>Área Química C1</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><strong>Disco de Corte 7 Pol</strong></td>
+                    <td>Disco abrasivo para metais ferrosos</td>
+                    <td>R$ 14,90</td>
+                    <td>UN</td>
+                    <td>Corredor B4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ABA 3: FORNECEDORES -->
+          <div class="tab-panel" id="panel-fornecedores">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>CNPJ (Exclusivo)</th>
+                    <th>Razão Social</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Cidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><code>12.345.678/0001-90</code></td>
+                    <td><strong>Aços Brasil Ltda</strong></td>
+                    <td>vendas@acosbrasil.com.br</td>
+                    <td>(19) 3441-1020</td>
+                    <td>Limeira</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><code>98.765.432/0001-10</code></td>
+                    <td><strong>Fixadores SP S.A.</strong></td>
+                    <td>contato@fixadoressp.com.br</td>
+                    <td>(19) 3442-5588</td>
+                    <td>Piracicaba</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><code>45.123.789/0001-55</code></td>
+                    <td><strong>LubriTech Industrial</strong></td>
+                    <td>comercial@lubritech.com.br</td>
+                    <td>(11) 4004-9900</td>
+                    <td>Campinas</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ABA 4: SETORES -->
+          <div class="tab-panel" id="panel-setores">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Setor Industrial</th>
+                    <th>Responsável</th>
+                    <th>Localização</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>SET-01</strong></td>
+                    <td>Usinagem Pesada</td>
+                    <td>Carlos Mendes</td>
+                    <td>Galpão 1 - Ala Norte</td>
+                    <td><span class="badge badge-success">DISPONÍVEL</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>SET-02</strong></td>
+                    <td>Manutenção Mecânica</td>
+                    <td>Fernanda Alves</td>
+                    <td>Galpão 2 - Central</td>
+                    <td><span class="badge badge-success">DISPONÍVEL</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>SET-03</strong></td>
+                    <td>Pintura Industrial</td>
+                    <td>Roberto Silva</td>
+                    <td>Galpão 3 - Ala Sul</td>
+                    <td><span class="badge badge-danger">INDISPONÍVEL</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ABA 5: HISTÓRICO -->
+          <div class="tab-panel" id="panel-historico">
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#ID</th>
+                    <th>Data / Hora</th>
+                    <th>Tipo</th>
+                    <th>Material</th>
+                    <th>Qtd.</th>
+                    <th>Origem / Destino</th>
+                    <th>Ramal</th>
+                    <th>Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#04</td>
+                    <td>07/11/2026 16:00</td>
+                    <td><span class="badge badge-warning">SAÍDA</span></td>
+                    <td><strong>Disco de Corte 7 Pol</strong></td>
+                    <td>25 UN</td>
+                    <td>Setor: Manutenção Mecânica</td>
+                    <td>4315</td>
+                    <td>Manutenção preventiva linha 2</td>
+                  </tr>
+                  <tr>
+                    <td>#03</td>
+                    <td>06/11/2026 14:20</td>
+                    <td><span class="badge badge-warning">SAÍDA</span></td>
+                    <td><strong>Chapa de Aço 1020</strong></td>
+                    <td>30 UN</td>
+                    <td>Setor: Usinagem Pesada</td>
+                    <td>4210</td>
+                    <td>Requisição OP-104</td>
+                  </tr>
+                  <tr>
+                    <td>#02</td>
+                    <td>05/11/2026 10:15</td>
+                    <td><span class="badge badge-success">ENTRADA</span></td>
+                    <td><strong>Parafuso Sextavado M10</strong></td>
+                    <td>1.200 UN</td>
+                    <td>Fornecedor: Fixadores SP S.A.</td>
+                    <td>4105</td>
+                    <td>NF 8890 - Reposição parafusos</td>
+                  </tr>
+                  <tr>
+                    <td>#01</td>
+                    <td>04/11/2026 08:30</td>
+                    <td><span class="badge badge-success">ENTRADA</span></td>
+                    <td><strong>Chapa de Aço 1020</strong></td>
+                    <td>150 UN</td>
+                    <td>Fornecedor: Aços Brasil Ltda</td>
+                    <td>4102</td>
+                    <td>NF 4512 - Compra mensal</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PLANOS E PREÇOS (VALORES REDUZIDOS) -->
+    <section class="section-block" id="precos">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Investimento Acessível</span>
+          <h2>Planos e Preços</h2>
+          <p>Escolha o pacote ideal para o porte do seu almoxarifado, com mensalidades acessíveis e sem taxas ocultas.</p>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plano 1 -->
+        <div class="price-card">
+          <div>
+            <h3>Essencial</h3>
+            <p class="price-desc">Para pequenos almoxarifados e oficinas em fase de estruturação.</p>
+            <div class="price-value">R$ 89 <small>/mês</small></div>
+            <ul class="price-features">
+              <li><strong>✔</strong> Até 500 materiais cadastrados</li>
+              <li><strong>✔</strong> Até 3 setores industriais</li>
+              <li><strong>✔</strong> Controle de entradas e saídas</li>
+              <li><strong>✔</strong> Alerta visual de estoque mínimo</li>
+              <li><strong>✔</strong> Suporte por e-mail em horário comercial</li>
+            </ul>
+          </div>
+          <a href="#solicitar" class="btn btn-outline-navy btn-full">Contratar Essencial</a>
+        </div>
+
+        <!-- Plano 2 (Destaque) -->
+        <div class="price-card featured">
+          <span class="popular-ribbon">Mais Escolhido</span>
+          <div>
+            <h3>Industrial Pro</h3>
+            <p class="price-desc">Controle completo para fábricas com alto giro e múltiplos setores.</p>
+            <div class="price-value">R$ 189 <small>/mês</small></div>
+            <ul class="price-features">
+              <li><strong>✔</strong> Materiais e prateleiras ilimitados</li>
+              <li><strong>✔</strong> Setores e fornecedores ilimitados</li>
+              <li><strong>✔</strong> Transações atômicas (COMMIT / ROLLBACK)</li>
+              <li><strong>✔</strong> Relatórios financeiros e indexação rápida</li>
+              <li><strong>✔</strong> Suporte prioritário via WhatsApp e Ramal</li>
+            </ul>
+          </div>
+          <a href="#solicitar" class="btn btn-orange btn-full">Solicitar Industrial Pro</a>
+        </div>
+
+        <!-- Plano 3 -->
+        <div class="price-card">
+          <div>
+            <h3>Enterprise 360°</h3>
+            <p class="price-desc">Para indústrias multi-plantas que exigem consultoria e integração sob medida.</p>
+            <div class="price-value">R$ 349 <small>/mês</small></div>
+            <ul class="price-features">
+              <li><strong>✔</strong> Saneamento completo de planilhas legadas</li>
+              <li><strong>✔</strong> Modelagem personalizada e migração SQL</li>
+              <li><strong>✔</strong> Treinamento presencial da equipe de fábrica</li>
+              <li><strong>✔</strong> Auditoria dedicada e SLA de 99,9%</li>
+              <li><strong>✔</strong> Gerente de conta exclusivo</li>
+            </ul>
+          </div>
+          <a href="#solicitar" class="btn btn-navy btn-full">Contratar Enterprise 360°</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. SOLICITAÇÃO DE SERVIÇOS & MEIOS DE CONTATO -->
+    <section class="section-block" id="solicitar">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Atendimento Comercial</span>
+          <h2>Solicitação de Serviços &amp; Meios de Contato</h2>
+          <p>Preencha o formulário para solicitar uma proposta, implantação ou demonstração guiada para sua empresa.</p>
+        </div>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Formulário de Solicitação de Serviço -->
+        <div class="surface-card">
+          <h3 style="font-size:1.15rem; color:var(--navy-800); margin-bottom:1rem;">Solicitar Serviço ou Orçamento</h3>
+          <form action="#contato" method="get">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sol-nome">Seu Nome Completo *</label>
+                <input type="text" id="sol-nome" name="nome" placeholder="Ex.: Eng. Roberto Almeida" required />
+              </div>
+              <div class="form-group">
+                <label for="sol-empresa">Empresa / Indústria *</label>
+                <input type="text" id="sol-empresa" name="empresa" placeholder="Ex.: Metalúrgica Limeira S.A." required />
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:0.9rem;">
+              <div class="form-group">
+                <label for="sol-email">E-mail Corporativo *</label>
+                <input type="email" id="sol-email" name="email" placeholder="roberto@empresa.com.br" required />
+              </div>
+              <div class="form-group">
+                <label for="sol-tel">Telefone / WhatsApp *</label>
+                <input type="tel" id="sol-tel" name="telefone" placeholder="(19) 99999-0000" required />
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:0.9rem;">
+              <div class="form-group">
+                <label for="sol-servico">Serviço ou Plano Desejado *</label>
+                <select id="sol-servico" name="servico" required>
+                  <option value="pro">Plano Industrial Pro (R$ 189/mês)</option>
+                  <option value="essencial">Plano Essencial (R$ 89/mês)</option>
+                  <option value="enterprise">Plano Enterprise 360° (R$ 349/mês)</option>
+                  <option value="implantacao">Implantação &amp; Saneamento de Banco de Dados</option>
+                  <option value="auditoria">Auditoria &amp; Organização de Estoque</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sol-porte">Quantidade Estimada de Itens</label>
+                <select id="sol-porte" name="porte">
+                  <option value="ate500">Até 500 materiais</option>
+                  <option value="500a2000">De 500 a 2.000 materiais</option>
+                  <option value="mais2000">Acima de 2.000 materiais</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:0.9rem;">
+              <label for="sol-msg">Detalhes da Necessidade *</label>
+              <textarea id="sol-msg" name="mensagem" rows="3" placeholder="Descreva os principais desafios do seu almoxarifado atual..." required></textarea>
+            </div>
+
+            <div style="margin-top:1.15rem;">
+              <button type="submit" class="btn btn-orange btn-full">Enviar Solicitação de Serviço</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Meios de Contato Direto -->
+        <div class="contact-cards" id="contato">
+          <div class="contact-item">
+            <div class="contact-icon">TEL</div>
+            <div>
+              <h4>Central Comercial &amp; Suporte</h4>
+              <p><strong>(19) 3441-3600</strong> • Ramal Interno: 4100<br>Segunda a Sexta, das 07h30 às 18h00</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon" style="background:var(--orange-500);">WPP</div>
+            <div>
+              <h4>WhatsApp Corporativo (Atendimento Ágil)</h4>
+              <p><strong>(19) 99876-3600</strong><br>Resposta média em até 15 minutos para clientes e cotações.</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">MAIL</div>
+            <div>
+              <h4>E-mail Oficial</h4>
+              <p><strong>comercial@almoxarifado360.com.br</strong><br>suporte@almoxarifado360.com.br</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">LOC</div>
+            <div>
+              <h4>Base Operacional</h4>
+              <p><strong>SENAI "Luiz Varga" — Limeira / SP</strong><br>Polo Industrial e Tecnológico • Atendimento em todo o Brasil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FEEDBACK DOS CLIENTES & PERGUNTAS FREQUENTES (FAQ) -->
+    <section class="section-block" id="feedback-faq">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Prova Social &amp; Transparência</span>
+          <h2>Feedback dos Clientes &amp; Perguntas Frequentes</h2>
+          <p>Veja a avaliação de quem utiliza o sistema diariamente e tire suas dúvidas sobre implantação e segurança.</p>
+        </div>
+      </div>
+
+      <div class="two-col-grid">
+        <!-- Coluna Esquerda: Feedbacks + Formulário de Avaliação -->
+        <div class="surface-card">
+          <h3 style="font-size:1.1rem; color:var(--navy-800); margin-bottom:1rem;">Avaliações Verificadas</h3>
+
+          <div class="review-item">
+            <div class="review-header">
+              <div><strong>Carlos Mendes</strong> • <small style="color:var(--text-muted)">Supervisor de Usinagem</small></div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p style="font-size:0.88rem; color:var(--text-body);">
+              "Antes perdíamos horas procurando chapas e parafusos em planilhas desatualizadas. Com o Almoxarifado 360°, o saldo bate 100% com a prateleira."
+            </p>
+          </div>
+
+          <div class="review-item">
+            <div class="review-header">
+              <div><strong>Fernanda Alves</strong> • <small style="color:var(--text-muted)">Coord. Manutenção Mecânica</small></div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p style="font-size:0.88rem; color:var(--text-body);">
+              "O alerta automático de estoque mínimo evitou uma parada não programada na linha de produção. Implantação rápida e equipe muito atenciosa."
+            </p>
+          </div>
+
+          <form style="margin-top:1.25rem; padding-top:1.1rem; border-top:1px solid var(--border-light);">
+            <h4 style="font-size:0.95rem; color:var(--navy-800); margin-bottom:0.75rem;">Deixe seu Feedback</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Seu Nome / Empresa *</label>
+                <input type="text" placeholder="Ex.: Ana Paula - Compras" required />
+              </div>
+              <div class="form-group">
+                <label>Avaliação *</label>
+                <select required>
+                  <option value="5">★★★★★ (5/5 Excelente)</option>
+                  <option value="4">★★★★☆ (4/5 Muito Bom)</option>
+                  <option value="3">★★★☆☆ (3/5 Bom)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:0.75rem;">
+              <label>Depoimento *</label>
+              <textarea rows="2" placeholder="Conte sua experiência com nossos serviços..." required></textarea>
+            </div>
+            <div style="margin-top:0.85rem;">
+              <button type="submit" class="btn btn-navy btn-sm">Publicar Avaliação</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Coluna Direita: Perguntas Frequentes (FAQ) -->
+        <div class="surface-card">
+          <h3 style="font-size:1.1rem; color:var(--navy-800); margin-bottom:1rem;">Perguntas Frequentes (FAQ)</h3>
+
+          <details class="faq-item" open>
+            <summary>Quanto tempo leva para implantar o sistema na minha empresa?</summary>
+            <p>
+              Para os planos Essencial e Industrial Pro, a liberação ocorre em até 24 horas. No plano Enterprise 360°, realizamos o saneamento e importação das suas planilhas atuais em até 5 dias úteis.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Como o sistema evita erros de saldo negativo ou exclusão de histórico?</summary>
+            <p>
+              O banco de dados possui restrições nativas (<code>CHECK</code>, <code>UNIQUE</code> e <code>ON DELETE RESTRICT</code>) além de transações atômicas (<code>COMMIT</code> e <code>ROLLBACK</code>), impedindo saídas sem saldo ou perda de notas fiscais antigas.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Posso mudar de plano conforme o meu almoxarifado crescer?</summary>
+            <p>
+              Sim. O upgrade entre planos é imediato e preserva 100% do seu histórico de materiais, fornecedores, setores e movimentações sem custo de migração.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>O sistema funciona em celulares e tablets dentro do galpão?</summary>
+            <p>
+              Sim. Toda a interface é responsiva e se adapta automaticamente a smartphones, tablets e computadores desktop, facilitando a conferência direto na prateleira.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 10. RODAPÉ CORPORATIVO COMPLETO -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>Almoxarifado 360°</h4>
+        <p>Tecnologia e governança de dados para gestão de almoxarifados industriais. Controle de estoque, fornecedores, setores e auditoria em uma única plataforma.</p>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#quem-somos">Quem Somos Nós</a></li>
+          <li><a href="#servicos">Nossos Serviços</a></li>
+          <li><a href="#confiabilidade">Garantias de Confiabilidade</a></li>
+          <li><a href="#precos">Planos e Preços</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Operação &amp; Suporte</h4>
+        <ul>
+          <li><a href="#sistema">Painel do Almoxarifado</a></li>
+          <li><a href="#solicitar">Solicitar Serviço</a></li>
+          <li><a href="#feedback-faq">Perguntas Frequentes (FAQ)</a></li>
+          <li><a href="#contato">Canais de Atendimento</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projeto &amp; Arquitetura</h4>
+        <ul>
+          <li>SENAI "Luiz Varga" — Limeira/SP</li>
+          <li>Modelo Relacional 3FN (MySQL)</li>
+          <li>Equipe: Vinicius, Rebeca, Duda &amp; Samira</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Almoxarifado Industrial 360° — Todos os direitos reservados.</span>
+      <span>HTML5 Semântico &amp; CSS3 Responsivo</span>
+    </div>
+  </footer>
+
+</body>
+</html>
